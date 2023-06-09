@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>영역 관련 속성</title>
+        <style>
+            /* 
+                float 속성
+                페이지 내의 요소의 위치를 왼쪽이나 오른쪽으로 지정하는 속성 
+            */
+            .float-test {
+                width : 100px;
+                height : 50px;
+                border : 1px solid black;
+                float : left;
+            }
+            .block {
+                width : 110px;
+                height : 50px;
+                border : 1px solid black;
+                display: inline;
+            }
+            .block2 {
+                width : 110px;
+                height : 50px;
+                border : 1px solid black;
+                display: inline-block;
+            }
+            .block3 {
+                width : 110px;
+                height: 50px;
+                border : 1px solid black;
+                display : block;
+            }
+            .area1 {
+                background-color: red;
+            }
+            .area2 {
+                background-color: orange;
+            }
+            .area3 {
+                background-color: yellow;
+            }
+            .area4 {
+                background-color: green;
+            }
+            .area5 {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>float속성과 display속성</h1>
+        <h3>float 속성</h3>
+        <p>페이지 내의 요소의 위치를 왼쪽이나 오른쪽으로 지정하는 속성</p>
+        <div class="float1">
+            <div class="float-test float-test1">111</div>
+            <div class="float-test float-test2">222</div>
+            <div class="float-test float-test3">333</div>
+            <div class="float-test float-test4">444</div>
+            <div class="float-test float-test5">555</div>
+        </div>
+        <br><br><br>
+        <h3>화면 배치 변경 방법</h3>
+        <p>박스(블록) 요소와 인라인 요소의 속성을 변경하여 배치방식을 변경할 수 있음</p>
+        <pre><b>>> display:inline 테스트</b></pre>
+        <pre>인라인 요소로 변경되면서 width와 height 속성이 무시된다.</pre>
+        <div class="block block-test1 area1">첫번째 영역</div>
+        <div class="block block-test2 area2">두번째 영역</div>
+        <div class="block block-test3 area3">세번째 영역</div>
+        <div class="block block-test4 area4">네번째 영역</div>
+        <div class="block block-test5 area5">다섯번째 영역</div>
+        
+        <pre><b>>> display:inline-block 테스트</b></pre>
+        <pre>영역은 인라인 요소로 변경되지만 내용은 블록요소로 
+    지정되어 width와 height속성을 설정할 수 있다.</pre>
+        <div class="block2 block-test1 area1">첫번째 영역</div>
+        <div class="block2 block-test2 area2">두번째 영역</div>
+        <div class="block2 block-test3 area3">세번째 영역</div>
+        <div class="block2 block-test4 area4">네번째 영역</div>
+        <div class="block2 block-test5 area5">다섯번째 영역</div>
+        
+        <pre><b>>> display:block 테스트</b></pre>
+        <pre>인라인 요소를 블록요소로 변경하면 width와 height 속성을
+    설정할 수 있고 블록 요소로 변경할 수 있다.
+        </pre>
+        <span class="block3 area1">첫번째 영역</span>
+        <span class="block3 area2">두번째 영역</span>
+        <span class="block3 area3">세번째 영역</span>
+        <span class="block3 area4">네번째 영역</span>
+        <span class="block3 area5">다섯번째 영역</span>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </body>
+</html>
