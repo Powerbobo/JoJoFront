@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 내장 객체</title>
+    </head>
+    <body>
+        <script>
+            // Date 객체
+            var today = new Date();
+            var specificDay = new Date("2023-05-15");
+            var startDay = new Date("2023-05-15T10:00:00");
+            console.log(startDay);
+            console.log(specificDay.getTime());
+            console.log(specificDay.getDate())
+            console.log(specificDay.getFullYear());
+            console.log(specificDay);
+            console.log(today);
+
+
+
+            // String 객체
+            var strInput = "Hello, Javascript, world"
+            //new String("Hello, Javascript, world")
+            console.log("대문자 만들기 : " + strInput.toUpperCase());
+            console.log("소문자 만들기 : " + strInput.toLowerCase());
+            //console.log(strInput);
+            console.log("문자열 길이 : " + strInput.length);
+            console.log("인덱스 위치" + strInput.indexOf("l"));
+            console.log("인덱스 위치(뒤에서)" + strInput.lastIndexOf("l"));
+            console.log("문자 만들기 : " + strInput.charAt(2));
+            console.log("문자열 자르기" + strInput.substring(0,6));
+            console.log("배열 만들기");
+            var strArrs = strInput.split(",")
+            strArrs.forEach(function(element,inedx) { // 반복문으로 동작
+                console.log(element.trim()); // 문자열 양 옆 공백 제거
+            })
+
+
+            // Math 객체
+            var absVal = Math.abs(-4);
+            // 0*10 <= randVal < 1*10
+            // 1부터 10까지의 난수 생성
+            var randVal = Math.floor(Math.random()*10)+1;
+            var floorVal = Math.floor(5.15);
+            var roundVal = Math.round(10.26);
+            var ceilVal = Math.ceil(9.17);
+
+            console.log(absVal);
+            console.log(randVal);
+            console.log(floorVal);
+            console.log(roundVal);
+            console.log(ceilVal);
+        </script>
+
+        <h2>Array 객체</h2>
+
+        <h2>Date 객체</h2>
+        <h3>날짜/시간 정보 가져오기</h3>
+        <p>
+            1. getFullYear() : 년도 가져오기 <br>
+            2. getMont() : 월 가져오기, 1월이 0이라서 +1 <br>
+            3. getDate() : 일 가져오기 <br>
+            4. getDay() : 요일 가져우기 <br>
+            5. getTime() : 1970년 1월 1일 이후 지난 밀리초로 가져오기; <br>
+            6. getHours() : 시 가져오기 <br>
+            7. getMinutes() : 분 가져오기 <br>
+            8. getSeconds() : 초 가져오기 <br>
+            9. geyMilliseconds() : 밀리초 가져오기 <br>
+        </p>
+        <h3>날짜/시간 설정하기</h3>
+        <p>
+            1. setgetFullYear() :  <br>
+            2. setgetMont() :  <br>
+            3. setgetDate() :  <br>
+            4. setgetDay() :  <br>
+            5. setgetTime() :  <br>
+            6. setgetHours() :  <br>
+            7. setgetMinutes() :  <br>
+            8. setgetSeconds() :  <br>
+            9. setgeyMilliseconds() :  <br>
+        </p>
+
+
+        <h2>Math 객체</h2>
+            1. Math.abs() : 절대값 구하기 <br>
+            2. Math.random() : 난수 구하기 <br>
+            3. Math.floor() : 버리기 <br>
+            4. Math.round() : 반올림 <br>
+            5. Math.ceil() : 올림 <br>
+        <h2>String 객체</h2>
+            1. 문자열.toUpperCase() : 모두 대문자 만들기 <br>
+            2. 문자열.toLowerCase() : 모두 소문자 만들기 <br>
+            3. 문자열.lengthCase() : 길이 구하기 <br>
+            4. 문자열.indexOf() : 인덱스 위치 구하기 <br>
+            5. 문자열.lastIndexOf() : 역방향 인덱스 위치 구하기 <br>
+            6. 문자열.chatAt() : 문자 만들기 <br>
+            7. 문자열.substring() : 문자열 자르기 <br>
+            8. 문자열.split() : 전달값 기준으로 잘라서 배열로 전환<br>
+            9. 문자열.trim() : 문자열 양옆 공백 제거
+    </body>
+</html>
