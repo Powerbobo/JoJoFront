@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>브라우저 객체 모델</title>
+        <style>
+            #clockArea {
+                background-color: #ccc; 
+                border : 1px solid black;
+                width:300px;
+                height:100px;
+                font-size: 30px;
+                color:black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Window 객체</h1>
+        <p>
+            window 객체는 자바스크립트의 최상위 객체이며, BOM과 DOM 으로 나뉜다.
+        </p>
+        <h2>window 객체</h2>
+        <h3>브라우저 창에 대한 설정하는 객체</h3>
+            <button onclick="callConfirm();">confirm 확인</button> <br><br>
+            <button onclick="callPrompt();">prompt 확인</button> <br><br>
+            <button onclick="callOpen();">open 확인</button>
+            <button onclick="callClose();">close 확인</button> <br><br>
+            <button id="callTimeOut">setTimeOut 확인</button> <br><br>
+            <button id="callInterval">setInterval 확인</button>
+            <button id="callIntervalClear">clearInterval 확인</button> <br><br>
+            <button onclick="startClock();">디지털 시계 On</button>
+            <button onclick="stopClock();">디지털 시계 Off</button>
+            <div id="clockArea"></div>
+        <h2>screen 객체</h2>
+        <h3>웹 브라우저 화면이 아닌 운영체제 화면의 속성을 가진 객체</h3>
+        <button id="checkScreen">스크린 객체 확인</button>
+        <h2>navigator 객체</h2>
+        <h3>웹 페이지를 실행하고 있는 브라우저에 대한 정보를 가진 객체</h3>
+        <button id="checkNavi">네비게이터 객체 확인</button>
+        <h2>location 객체</h2>
+        <h3>브라우저 주소 표시줄과 관련된 객체(페이지 이동)</h3>
+        <!-- 로케이션 확인 버튼은 새로고침! -->
+        <button onclick="javascript:location.reload();">location 확인</button>
+        <button onclick="checkHref()">href 페이지 이동</button>
+        <button onclick="checkAssign()">assign 페이지 이동</button>
+        <button onclick="checkReplace()">replace 페이지 이동</button>
+        <h2>history 객체</h2>
+        <button onclick="checkHistory()">history 실행 확인</button>
+
+        <script>
+            var clockObj = null; // 전역변수 선언
+            //디지털 시계 On
+            function startClock() {
+                var clockArea = document.querySelector("#clockArea");
+                clockObj = window.setInterval(function() {
+                    //동작할 코드 작성
+                    var nowTime = new Date();
+                    // 시간의 시, 분, 초만 가져오기 방법1
+                    //clockArea.innerText = nowTime.getHours() + " : " + nowTime.getMinutes() + " : " + nowTime.getSeconds();
+                    // 시간의 시, 분, 초만 가져오기 방법2
+                    clockArea.innerText = nowTime.toLocaleTimeString();
+                    // 년도, 월, 일 뜨게하는 함수
+                    //clockArea.innerText = nowTime.toLocaleDateString();
+                },1000 );
+            }
+            function stopClock() {
+                window.clearInterval(clockObj);
+                document.querySelector("#clockArea").innerText = "";
+            }
+
+
+
+
+
+            //window 객체
+
+            var checkInterval = null; //callIntervalClear 함수에서 사용하기 위해 전역변수 선언
+            // setInterval 확인
+            document.querySelector("#callInterval").onclick = function() {
+                checkInterval = 
+                // 익명함수
+                window.setInterval(function() {
+                    console.log("실행완료!");
+                }, 1000);
+            }
+            // clearInterval 확인 (setInterval 로 실행시킨 동작을 중지시킨다.)
+document.querySelector("#callIntervalClear").addEventListener("click", function() {
+    window.clearInterval(checkInterval);
+})
+
+
+            var myObjectWindow = null; // 전역 변수 선언
+            // close 확인 (창 닫기)
+            function callClose() {
+                myObjectWindow.close();
+            }
+
+            // open 확인 (창 띄우기)
+            function callOpen() {
+                // 내용, 이름, 창 , 옵션 순서로 설정했고, 더 다양한 옵션 설정이 가능하다.
+                // 창을 열기 위해선 html 파일이 하나 더 필요하다.
+                // myObjectWindow 라는 변수명을 만들어 객체로 만들어서 close() 객체를 사용하면 변수로 활용해서 창을 닫을 수 있다.
+                myObjectWindow = window.open("6.JS_Object.html", "pop", "width=500, height=400 left=400 top=200");
+            }
+
+            // setTimeOut 확인 (실행하기까지 시간 지연)
+            document.querySelector("#callTimeOut").addEventListener("click", function() {
+                window.setTimeout(function() {
+                    myObjectWindow.close();
+                }, 3000); // ms = 1/1000s, 3000ms = 3000*1/1000s
+                
+            })
+            
+            // prompt 확인 (프롬프터 창 띄우기)
+            function callPrompt() {
+                var userId = window.prompt("아이디를 입력하세요.");
+                console.log(userId);
+            }
+
+            // confirm 확인
+            function callConfirm() {
+                var result = confirm("확인을 누르면 true 리턴, 취소를 누르면 false 리턴")
+                console.log(result);
+            }
+
+
+
+            // history 객체
+            function checkHistory() {
+                console.log(history);
+                // history는 페이지 이동이 되면 값이 누적이 된다.
+                // back() 뒤로가기, forword() 앞으로 가기
+                // go() 현재 페이지 기준으로 +2, +1, -3, -1 으로 한번에 이동할 수 있음
+            }
+
+
+
+
+            // location 객체
+            // 페이지 이동(현재 문서의 URL을 지우고 다른 URL의 문서로 교체)
+            function checkReplace() {
+                // assign은 함수이기 때문에 주소를 ()안에 넣는다. 리턴값이 존재한다.
+                // 현재 문서를 지우고 이동해서 뒤로가기가 안됨!
+                location.replace("http://kh-academy.co.kr")
+            }
+            // 페이지 이동(현재 문서에 새 문서 주소를 할당해서 새문서 가져옴)(assign은 함수이기 때문에 주소를 ()안에 넣는다.)
+            function checkAssign() {
+                location.assign("http://kh-academy.co.kr/")
+            }
+            //페이지 이동 (href 가 속성이기 때문에 () 를 붙이지 않는다.)
+            function checkHref() {
+                // 주소값을 변경한다.
+                location.href = "http://www.kh-academy.co.kr/"
+            }
+
+
+
+            //navigator 객체
+            document.querySelector("#checkNavi").onclick = function() {
+                console.log(window.navigator);
+            }
+
+
+
+            //screen 객체
+            document.querySelector("#checkScreen").addEventListener("click", function() {
+                console.log(window.screen);
+            })
+        </script>
+    </body>
+</html>
