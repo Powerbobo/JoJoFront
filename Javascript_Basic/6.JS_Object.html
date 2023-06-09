@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자바스크립트 객체</title>
+        <style>
+            .area-big {
+                height: 400px;
+                width: 1px solid #222;
+                background-color: #ccc;
+            }
+            .area {
+                height: 200px;
+                border: 1px solid #222;
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 객체</h1>
+        <h3>객체 선언 및 호출</h3>
+        <p>객체는 키 값을 사용하여 value를 식별함 <br>
+            value에는 모든 자료형이 올 수 있다.</p>
+        <button id="btn1">실행확인</button>
+            <div id="area1" class="area-big"></div>
+
+
+        <h3>객체의 키</h3>
+        <p>
+            객체의 키는 모든 문자열을 사용할 수 있다. <br>
+            키로 사용할 수 없는 단어를 키로 사용한 경우에는 무조건 대괄호를 사용해야
+            객체의 요소에 접근할 수 있다.
+        </p>
+        <button onclick="jsObject2();">실행확인</button>
+        <div id="area2" class="area"></div>
+
+
+        
+        <h3>객체의 메소드(함수)</h3>
+        <p>
+            객체의 value 중 함수 자료형인 value를 메소드(함수)라 함
+        </p>
+        <button id="btn3">실행확인</button>
+        <div id="area3" class="area"></div>
+
+
+
+        <h3>객체와 반복문</h3>
+        <p>
+            객체의 value를 출력할 때에는 단순 for문으로는 사용할 수 없고,<br>
+            for in문(foreach문)을 사용해야 함
+        </p>
+        <button id="btn4">실행확인</button>
+        <div id="area-for" class="area"></div>
+
+
+        
+        <h3>객체의 키, 값 추가와 제거</h3>
+        <p>
+            처음 객체 생성 이후 키, 값을 추가하거나 제거하는 것을 동적으로 할 수 있음.
+        </p>
+        <button id="btn5">실행확인</button>
+        <div id="area5" class="area"></div>
+
+
+        <h3>객체의 in 과 with 키워드</h3>
+        <p>
+            in : 객체 내부에 해당 속성이 있는지 확인하는 키워드
+            <br>
+            with : 호출시 코드를 줄여주는 키워드(객체명 생략가능)
+        </p>
+        <label>이름 : <input type="text" id="name"></label><br>
+        <label>국어 : <input type="text" id="kor"></label><br>
+        <label>영어 : <input type="text" id="eng"></label><br>
+        <label>수학 : <input type="text" id="math"></label><br>
+        <button onclick="jsobject6();">실행확인</button>
+        <div id="area6" class="area-big"></div>
+
+        <script>
+            // sutdent 변수가 비어있다고 선언
+            // var sutdent = null;
+            // 객체의 in 과 with 키워드
+            function jsobject6() {
+                var nameVal = document.querySelector("#name").value;
+                var korVal = Number(document.querySelector("#kor").value);
+                var engVal = Number(document.querySelector("#eng").value);
+                var mathVal = Number(document. querySelector("#math").value);
+                var div6Tag = document.querySelector("#area6");
+                var totalVal = korVal+engVal+mathVal;
+                var avgVal = totalVal/3;
+                
+                // //마침표 표기법
+                // var student = new Object();
+                // student.name = nameVal;
+                // student.kor = korVal;
+                // student.eng = engVal;
+                // student.math = mathVal;
+                
+                // // 대괄호 표기법 
+                // var student = new Object();
+                // student["name"] = nameVal;
+                // student["kor"] = korVal;
+                // student["eng"] = engVal;
+                // student["math"] = mathVal;
+                
+                //제이슨 표기법 (일반적으로 가장 많이 씀)
+                // student = {
+                //         "name" : nameVal,
+                //         "kor" : korVal,
+                //         "eng" : engVal,
+                //         "math" : mathVal,
+                //         "total" : totalVal,
+                //         "avg" : avgVal
+                //     }
+                
+                // // for문과 if문으로 유효성 체크
+                // if(nameVal == "") {
+                //     alert("이름을 입력해주세요")
+                //     return false;
+                // }
+                // var scoreCheck = {
+                //     "kor" : korVal,
+                //     "eng" : engVal,
+                //     "math" : mathVal
+                // }
+                // for(var keyword in scoreCheck) {
+                //     if(scoreCheck[keyword] == 0) {
+                //         alert(keyword + "를 입력해주세요");
+                //         return false;
+                //     }
+                // }
+
+                //student 가 null로 둬서 유효성 체크
+                if(nameVal != "" && korVal !=0 && engVal !=0 && mathVal != 0) {
+                    student = {
+                        "name" : nameVal,
+                        "kor" : korVal,
+                        "eng" : engVal,
+                        "math" : mathVal,
+                        "total" : totalVal,
+                        "avg" : avgVal
+                    }
+                    with(student) {
+                        div6Tag.innerHTML += "이름 : " + name + "<br>"
+                        div6Tag.innerHTML += "국어 : " + kor + "<br>"
+                        div6Tag.innerHTML += "영어 : " + eng + "<br>"
+                        div6Tag.innerHTML += "수학 : " + math + "<br>"
+                        div6Tag.innerHTML += "총점 : " + totalVal + "<br>"
+                        div6Tag.innerHTML += "평균 : " + avgVal + "<br>"
+                    }
+                }else {
+                    alert("값이 모두 입력되지 않았습니다.");
+                }
+                
+
+                // var student = {
+                //     "name" : nameVal,
+                //     "kor" : korVal,
+                //     "eng" : engVal,
+                //     "math" : mathVal,
+                //     "total" : totalVal,
+                //     "avg" : avgVal
+                // }
+                    
+
+                // if(korVal == 0) {
+                //     alert("국어를 입력해주세요")
+                //     return false;
+                // }
+
+                // if(engVal == 0) {
+                //     alert("영어를 입력해주세요")
+                //     return false;
+                // }
+
+                // if(mathVal == 0) {
+                //     alert("수학을 입력해주세요")
+                //     return false;
+                // }
+
+                //유효성 체크
+                // if(student != null) {
+                //     // with 키워드 사용법
+                //     with(student) {
+                //         div6Tag.innerHTML += "이름 : " + name + "<br>"
+                //         div6Tag.innerHTML += "국어 : " + kor + "<br>"
+                //         div6Tag.innerHTML += "영어 : " + eng + "<br>"
+                //         div6Tag.innerHTML += "수학 : " + math + "<br>"
+                //         div6Tag.innerHTML += "총점 : " + totalVal + "<br>"
+                //         div6Tag.innerHTML += "평균 : " + avgVal + "<br>"
+                //     }
+                //     student = null;
+                // }else {
+                //     alert("값을 입력해주세요");
+                // }
+
+                // in 키워드 : key값 존재 여부 true/false 리턴
+                // console.log("name" in student);
+                // console.log("korean" in student);
+                // console.log("eng" in student);
+            }
+            
+            
+
+
+
+
+            // 객체의 키, 값 추가와 제거
+            //document.querySelector("#btn5").onclick = function() {
+            // 익명함수를 화살표 함수로 바꿔서 사용함
+            document.querySelector("#btn5").onclick = () => {
+                var person = {
+                    "name" : "일용자",
+                    "hobby" : "낚시,수영,코딩",
+                    "strength" : "javascript",
+                    "dream" : "프론트엔드 개발자",
+                    "toString" : function() {
+                        var str = "";
+                        for(var keyword in person) {
+                            if(keyword != "toString") {
+                                str += keyword + " : " + person[keyword] + "<br>";
+                            }
+                        }
+                        // str += "name : " + person["name"] + "<br>";
+                        // str += "hobby : " + person["hobby"] + "<br>";
+                        // str += "strength : " + person["strength"] + "<br>";
+                        // str += "dream : " + person["dream"] + "<br>";
+                        return str;
+                    }
+                }
+                // 배열 추가
+                person.favorite = "마라탕";
+                person["최애"] = "영화감상";
+                delete(person["최애"]);
+                delete(person.dream)
+                person.dream = "웹 개발자"
+                document.querySelector("#area5").innerHTML = person.toString();
+                //name : 일용자, hobby: 낚시, 수영, 코딩, strength : javascript, dream : 프론트엔드 개발자
+            }
+
+
+
+            // 객체와 반복문
+            document.querySelector("#btn4").addEventListener("click", function() {
+                var game = {
+                    "title" : "LOL",
+                    "price" : "free",
+                    "language" : "한국어",
+                    "supportOS" : "Everything",
+                    "service" : true
+                }
+                var div4Tag = document.querySelector("#area-for");
+                // key 값을 변수 game에 넣어준다
+                for(var keyword in game) {
+                    div4Tag.innerHTML += "Game의" + keyword + " : " + game[keyword] + "<br>";
+                }
+                // div4Tag.innerHTML += "Game의 title : " + game.title + "<br>";
+                // div4Tag.innerHTML += "Game의 price : " + game.price + "<br>";
+                // div4Tag.innerHTML += "Game의 language : " + game.language + "<br>";
+                // div4Tag.innerHTML += "Game의 supportOS : " + game.supportOS + "<br>";
+                // div4Tag.innerHTML += "Game의 service : " + game.service + "<br>";
+            })
+
+
+
+
+
+
+            // 객체의 메소드
+            // 고전 이벤트
+            document.querySelector("#btn3").onclick = function() {
+                var divTag3 = document.querySelector("#area3");
+                var dog = new Object();
+                dog.name = "백지";
+                dog.birthday = "2013003";
+                // 함수를 사용해서 동작을 설명할 수 있다.
+                dog.bark = function() {
+                    alert("왈왈");
+                    divTag3.innerHTML += "왈왈";
+                }
+                dog.eat = function() {
+                    divTag3.innerHTML += "백지가 밥을 먹습니다.";
+                    alert("와그작와그작")
+                }
+                //dog.bark();
+                dog.eat();
+            }
+
+
+
+            // 자바스크립트 키
+            function jsObject2() {
+                var divTag2 = document.querySelector("#area2");
+                var objOne = {};
+                objOne.pName = "Front-end";
+                objOne["type"] = "javascript";
+                objOne["I love you"] = "DOM";
+                objOne["I hate you"] = "Programming";
+                divTag2.innerHTML += "I love you : " + objOne["I love you"] + "<br>"
+                divTag2.innerHTML += "I hate you : " + objOne["I hate you"] + "<br>"
+            }
+
+
+
+
+            // 자바스크립트 객체
+            document.querySelector("#btn1").addEventListener("click", function() {
+                var divTag1 = document.querySelector("#area1");
+                // product 객체 생성
+                var product = new Object(); // 또는 {} 를 써서 객체 생성
+                product.pName = "Dry Mango";
+                product.type = "dried";
+                product.ingredient = ["mango", "sugar"];
+                divTag1.innerHTML += "product Name : " + product.pName + "<br>";
+                divTag1.innerHTML += "type : " + product.type + "<br>";
+                divTag1.innerHTML += "ingredient1 : " + product.ingredient[0] + "<br>";
+                divTag1.innerHTML += "ingredient2 : " + product.ingredient[1] + "<br>";
+            })
+
+
+
+
+
+
+            // var array = new Array(); // Array 라는 객체가 new 라는 키워드를 만나 배열이된다.
+            // var number = new Number();
+            // var str = new String();
+            // var obj = new Object();
+            // obj = {};
+            // // Date, Math... > 자바스크랩트가 미리 만들어놓은 내장객체
+            // // 일반적으로 자바스크립트의 객체 라고하면 Object 객체를 말한다.
+            
+            // 각 변수를 선언하고 사용할때는 각 변수를 기억했다가 사용해야한다.
+            // var playerName = "David";
+            // var playerLevel = 43;
+            // var playerClass = "Knight";
+            // var isArmed = true;
+            // 여러개의 변수를 배열로 만들어서 변수를 한번에 핸들링 할 수 있다. 그러나 각 변수가 어떤 의미인지 기억이 어렵니다.
+            var playerArr = ["David", 43, "Knight", true];
+
+            // playerArr = new Array() // []
+            var playerObj = new Object(); //{}
+            // 내장객체인 Object 를 사용하면 데이터에 키값을 입력해서 어떤 변수인지 쉽게 기억할 수 있게끔 한다.
+            playerObj = {
+                //제이슨 표기법
+                "playerName" : "David",
+                "playerLevel" : 43,
+                "playerClass" : "Knight",
+                "isArmed" : true
+            }
+
+            // 마침표 표기법
+            var playerObj2 = new Object();
+            playerObj2.playerName = "Sera";
+            playerObj2.playerLevel = 99;
+            playerObj2.platerClass = "Priedt";
+            playerObj2.isArmed = false;
+
+            // 대괄호 표기법 (띄어쓰기 등이 있을 때 사용)
+            var playerObj3 = new Object();
+            playerObj3["playerName"] = "john";
+            playerObj3["playerLevel"] = 122;
+            playerObj3["playerClass"] = "Archer";
+            playerObj3["isArmed"] = true;
+
+            // console.log(playerObj);
+            // console.log(playerObj2);
+            // console.log(playerObj3);
+        </script>
+    </body>
+</html>
+
+
+</script>
