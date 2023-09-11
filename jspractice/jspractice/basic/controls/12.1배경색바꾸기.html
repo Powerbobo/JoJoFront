@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배경색 바꾸기</title>
+        <style>
+            a:link, a:visited {
+                color: #222;
+                text-decoration: none;
+            }
+            ul{
+                list-style: none;
+                padding: 0;
+                width: 500px;
+                margin: 10px auto;
+            }
+            ul li{
+                border: 1px solid #ccc;
+                display: inline-block;
+                padding: 15px 50px;
+                text-align: center;
+            }
+            #result {
+                border: 1px solid #ccc;
+                border-radius: 15px;
+                width: 500px;
+                height: 300px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="#" onclick="changeBg('green')">Geeen</a></li>
+            <li><a href="#" onclick="changeBg('orange')">Orange</a></li>
+            <li><a href="#" onclick="changeBg('purple')">Purple</a></li>
+        </ul>
+        <div id="result"></div>
+        <script>
+            function changeBg(color) {
+                document.querySelector("#result").style.backgroundColor = color;
+            }
+        </script>
+
+    </body>
+</html>

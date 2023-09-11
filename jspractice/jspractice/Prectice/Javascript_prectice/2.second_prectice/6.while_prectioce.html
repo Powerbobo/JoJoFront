@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>while 연습문제2</title>
+        <style>
+            body {
+                text-align: center;
+                padding-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var num = prompt("숫자를 입력하세요");
+            document.write("<h1>while 문을 사용한 팩토리얼 계산</h1>");
+            var nFact = 1;
+            var i = 1;
+            var mag = "";
+            if(num !== null) {
+                while(i <= num) {
+                    nFact = nFact*i;
+                    i++;
+                }
+                mag =  num +"!의 값 : "+nFact;
+                }else {
+                mag = "값을 입력하지 않았습니다.";
+            }
+            document.write(mag)
+        </script>
+    </body>
+</html>

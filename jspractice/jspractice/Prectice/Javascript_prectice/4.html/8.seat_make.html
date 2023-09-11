@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>테이블 생성</h1>
+        <button onclick="btn();">실행 확인</button>
+
+        <script>
+            function btn() {
+                var customer = prompt("입장객은 몇명인가요?");
+                var colNum = prompt("한 줄에 몇명씩 않나요?");
+                var rowNum = parseInt(customer/colNum)+1;
+                var count = 1;
+
+                document.write("<table border='1'>");
+                for(var i = 1; i <= rowNum; i++) {
+                    document.write("<tr>");
+                    for(var j = 1; j <= colNum; j++) {
+                        if(count > customer) break;
+                        document.write("<td>좌석 : "+count+"</td>");
+                        count++;
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            }
+        </script>
+    </body>
+</html>

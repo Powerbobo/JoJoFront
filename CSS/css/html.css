@@ -1,0 +1,76 @@
+#container {
+    width: 1000px;
+}
+header {
+    height: 100px;
+    --background-color: black;
+}
+    #header-layer1 {
+        width: 20%;
+        height: 100%;
+        background-color: aqua;
+        float:left;
+        
+    }
+    #header-layer2 {
+        width: 60%;
+        height: 100%;
+        background-color: gold;
+        float:left;
+    }
+    #header-layer3 {
+        width: 20%;
+        height: 100%;
+        background-color: greenyellow;
+        float:left;
+    }
+main {
+    height: 500px;
+}
+    #main-layer1 {
+        width: 25%;
+        height: 100%;
+        background-color: hotpink;
+        float:left;
+    }
+        #login {
+            width: 300px;
+        }
+        #login-top {
+            height: 70%;
+            width: 100%;
+        }
+        #login-layer1 {
+            height: 100%;
+            width: 60%;
+            float: left;
+        }
+        #login-layer2 {
+            height: 100%;
+            width: 40%;
+            float: left;
+        }
+            #btn {
+                padding: 10px;
+                margin-top: 6px;
+            }
+        #login-bottom {
+            height: 30%;
+            text-align: center;
+        }
+    #main-layer2 {
+        width: 50%;
+        height: 100%;
+        background-color: honeydew;
+        float:left;
+    }
+    #main-layer3 {
+        width: 25%;
+        height: 100%;
+        background-color: forestgreen;
+        float:left;
+    }
+footer {
+    height: 100px;
+    background-color: blueviolet;
+}

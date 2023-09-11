@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>table 만들기</title>
+    </head>
+    <body>
+        <h1>자동 테이블 만들기</h1>
+        <button id="btn1">테이블 생성</button>
+        <script>
+            var btn1 = document.querySelector("#btn1");
+            btn1.addEventListener("click", function() {
+                var rowNum = prompt("숫자를 입력하세요");
+                var colNum = prompt("숫자를 입력하세요");
+                count = 1;
+                document.write("<table border='1'>");
+                for(var i = 1; i <= rowNum; i++) {
+                    document.write("<tr>");
+                        for(var j = 1; j <= colNum; j++) {
+                            document.write("<td>"+count+"</td>");
+                            count++
+                        }
+                        document.write("</tr>");
+                }
+                document.write("</table>");
+            })
+            </script>
+            <!-- <body>
+                <h1>자동 테이블 만들기</h1>
+                <button id="btn1">테이블 생성</button>
+                <script>
+                    var mag = "";
+                    var btn1 = document.querySelector("#btn1");
+                    btn1.addEventListener("click", function() {
+                        var rowNum = prompt("숫자를 입력하세요");
+                        var colNum = prompt("숫자를 입력하세요");
+                        count = 1;
+                        mag = "<table border='1'>";
+                        for(var i = 1; i <= rowNum; i++) {
+                            mag = "<tr>";
+                                for(var j = 1; j <= colNum; j++) {
+                                    mag = "<td>"+count+"</td>";
+                                    count++
+                                }
+                            mag = "</tr>";
+                        }
+                        mag = "</table>";
+                    })
+            
+                    document.write(mag)
+                </script>
+            </body>
+            </html> -->
+    </body>
+</html>
+

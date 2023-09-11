@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ES6에서는..?</h1>
+    <h2>ES6에 추가된 내용들</h2>
+    <p>
+        Binary and Octal Literals, Template String, let + const, Defalt + Rest + Spreed, 
+        Arrow and Lexical This, Classes, Enhanced Object Literals, Literals Destructuring,
+        Iterators + For ..Of, Generators, Comprehensions, Unicode, Modules, Module Loaders,
+        Map + Set _ WeakMap + WeakSet, Proxies, Symbols, Subclassable Built-ins,
+        Math + Number + String + Objects Apis, Promises, Reflect Api, Tail Calls
+    </p>
+    <h2>공부할 내용들</h2>
+    <p>
+        1. 값, 변수, 컬렉션 <br>
+        - let, const <br>
+        - Template String <br>
+        - 향상된 JSON  표현식 <br>
+        - 객체 비구조화 <br>
+        - 배열 비구조화 <br>
+        - Set <br>
+        - Map <br>
+        <hr>
+        2. 제어구조 <br>
+        - Reset Parameters <br>
+        - Spread Operator <br>
+        <hr>
+        3. 함수 <br>
+        - Default Value <br>
+        - Arrow Function <br>
+        <hr>
+        4. 객체지향 <br>
+        - Class <br>
+        - 은닉화 <br>
+        - Static <br>
+        - 은닉화를 위한 게터/세터 <br>
+    </p>
+    <script>
+        // function print(x, y) { // -> 이 상태로는 2번째 값까지밖에 못 받음
+        function print(x, y, ...values) { // -> RestParameter
+            // console.log(x);
+            // console.log(y);
+            values.forEach(function(value){
+                // console.log(value);
+            })
+        }
+        // print(10, 26);
+        print(10, 26, 2023, "종강");
+        // 정해져있는 (x->10, y->26) 를 제외하고 나머지를 받는게 RestParameter
+
+        // ############### Spread Operator ##################
+        // function calc(nums) {
+        function calc(a, b, c) {
+            // console.log(nums[0]);
+            // console.log(nums[1]);
+            // console.log(nums[2]);
+            // console.log(a);
+            // console.log(b);
+            // console.log(c);
+        }
+        let nums = [9, 22, 2023];
+        // calc(nums);
+        // calc(nums[0], nums[1], nums[2]);
+        calc(...nums);
+        // ... 이 이벤트 핸들러 매개변수에 있으면 Rest Parameter
+        // ... 이 호출하는 함수의 절달값으로 있으면 Spread Operator
+
+        let set = new Set([2,4,6]);
+        let numArrs = [...set];
+        numArrs.forEach(function(value) {   // forEach문으로 한개씩 꺼내서 사용
+            // console.log(value);
+        });
+        let map = new Map([["name", "일용자"], ["age", 33]]);
+        // let strArrs = [...map];
+        // strArrs.forEach(function(value, key) {
+        //     console.log(`${key }:${value }`);
+        // });
+
+        // console.log(strArrs[0][0]);
+        // console.log(strArrs[0][1]);
+
+        console.log([...map][0][1]);
+    </script>
+</body>
+</html>

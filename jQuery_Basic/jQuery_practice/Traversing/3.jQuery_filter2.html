@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <style>
+            table { 
+                border : 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td { 
+                border : 1px solid black;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            // 방법 1
+            // const click1 = () => {
+            //     $("td").eq(1).css("color", "red");
+            //     $("td").eq(2).css("color", "red");
+            //     $("td").eq(4).css("color", "black");
+            //     $("td").eq(5).css("color", "black");
+            // }
+            // const click2 = () => {
+            //     $("td").eq(4).css("color", "red");
+            //     $("td").eq(5).css("color", "red");
+            //     $("td").eq(1).css("color", "black");
+            //     $("td").eq(2).css("color", "black");
+            // }
+            // const click3 = () => {
+            //     $("td").eq(1).css("color", "red");
+            //     $("td").eq(4).css("color", "red");
+            //     $("td").eq(2).css("color", "black");
+            //     $("td").eq(5).css("color", "black");
+            // }
+            // const click4 = () => {
+            //     $("td").eq(2).css("color", "red");
+            //     $("td").eq(5).css("color", "red");
+            //     $("td").eq(1).css("color", "black");
+            //     $("td").eq(4).css("color", "black");
+            // }
+
+
+            // 방법 2
+            // 처음 모든 색상을 블랙으로 변경한다음, 원하는 부분만 색상 변경
+            // const click1 = () => {
+            //     $("td").css("color", "black");
+            //     $("td").eq(1).css("color", "red");
+            //     $("td").eq(2).css("color", "red");
+            // }
+            // const click2 = () => {
+            //     $("td").css("color", "black");
+            //     $("td").eq(4).css("color", "red");
+            //     $("td").eq(5).css("color", "red");
+            // }
+            // const click3 = () => {
+            //     $("td").css("color", "black");
+            //     $("td").eq(1).css("color", "red");
+            //     $("td").eq(4).css("color", "red");
+            // }
+            // const click4 = () => {
+            //     $("td").css("color", "black");
+            //     $("td").eq(2).css("color", "red");
+            //     $("td").eq(5).css("color", "red");
+            // }
+            
+            // const clear = () => {
+            //     $("td").css("color", "black");
+            // }
+            // 방법3 - children() / not() 메소드 활용
+            // const click1 = () => {
+            //     $("td").css("color", "black")
+            //     $("tr:eq(1)").children("td").not(":first-child").css("color", "red");
+            // }
+            // const click2 = () => {
+            //     $("td").css("color", "black")
+            //     $("tr:eq(2)").children("td").not(":first-child").css("color", "red");
+            // }
+            // const click3 = () => {
+            //     $("td").css("color", "black")
+            //     $("td").eq(1).css("color", "red");
+            //     $("td").eq(4).css("color", "red");
+            // }
+            // const click4 = () => {
+            //     $("td").css("color", "black")
+            //     $("td").eq(2).css("color", "red");
+            //     $("td").eq(5).css("color", "red");
+            // }
+            
+            const checkBtn = () => {
+                $("[name=check]").each((index, item) => {
+                    if($(item).is(":checked")) {
+                        alert(item.value+"번");
+                    }
+                })
+            }
+
+            // const checkBtn = () => {
+            //     const checkTags = $("[name=check]").filter(":checked");
+            //     checkTags.each((index, item) => {
+            //         alert(item.value +"번");
+            //     })
+            // }
+
+            const selectBtn = () => {
+                $("option").each((index, item) => {
+                    if($(item).is(":selected")) {
+                        alert(item.value+"번");
+                    }
+                })
+            }
+
+
+            // const selectBtn = () => {
+            //     const selectedTag = $("option").filter(":selected");
+            //     alert(selectedTag.val()+"번");
+            // }
+
+        </script>
+        <table>
+            <tr><th>구분</th><th>A</th><th>B</th></tr>
+            <tr><td>가</td><td>10</td><td>10</td></tr>
+            <tr><td>나</td><td>20</td><td>20</td></tr>
+            <tr><td>계</td><td>30</td><td>30</td></tr>
+        </table>
+        <input type="button" value="[가]색 변경" onclick="click1();">
+        <input type="button" value="[나]색 변경" onclick="click2();">
+        <input type="button" value="[A]색 변경" onclick="click3();">
+        <input type="button" value="[B]색 변경" onclick="click4();">
+
+
+
+        <br>
+        <hr>
+        <input type="checkbox" name="check" value="1"> 1번
+        <input type="checkbox" name="check" value="2"> 2번
+        <input type="checkbox" name="check" value="3"> 3번
+        <input type="checkbox" name="check" value="4"> 4번
+        <br>
+        <input type="button" value="체크 버튼 확인" onclick="checkBtn()">
+
+        <br>
+        <hr>
+        <select>
+            <option value="1" selected="selected">1번</option>
+            <option value="2">2번 </option>
+            <option value="3">3번 </option>
+        </select>
+        <br>
+        <input type="button" value="Select 버튼 확인" onclick="selectBtn()">
+
+
+    </body>
+</html>

@@ -1,0 +1,97 @@
+img {
+    height: 100%;
+    width: 100%;
+}
+#container {
+    width: 1000px;
+    margin: 0 auto;
+    flex-direction: flex;
+}
+#header {
+    /* background-color: darkblue; */
+    height: 100px;
+}
+
+    #header-layer1 {
+        background-color: aliceblue;
+        height: inherit;
+        width: 20%;
+        float:left;
+        /* background-image: url(../img/logo.jpg); */
+        /* background-size: 100% 100%; */
+    }
+    #header-layer2 {
+        background-color: firebrick;
+        height: inherit;
+        width: 60%;
+        float:left;
+        /* background-image: url(../img/mainlogo.jpg);
+        background-repeat: no-repeat;
+        --background-size: 100% 100%; */
+    }
+    #header-layer3 {
+        background-color: darkblue;
+        height: inherit;
+        width: 20%;
+        float:left;
+    }
+#nav {}
+
+#main {
+    background-color: darkcyan;
+    height: 500px;
+}
+    #main-layer1 {
+        background-color: wheat;
+        height: 100%;
+        width: 20%;
+        float:left;
+        background-image: url(../img/left_img.jpg);
+        background-size: 100%;
+        background-repeat: none;
+    }
+    #main-layer2 {
+        background-color: yellowgreen;
+        height: 100%;
+        width: 55%;
+        float:left;
+    }
+        #img-top {
+            height: 50%;
+            width: 100%;
+        }
+            #top-left {
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+            #top-right {
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+        #img-bottom {
+            height: 50%;
+            width: 100%;
+        }
+            #bottom-left {
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+            #bottom-right {
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+    #main-layer3 {
+        background-color: darkgrey;
+        height: 100%;
+        width: 25%;
+        float:left;
+    }
+#footer {
+    background-color: darkgoldenrod;
+    height: 100px;
+    float:left;
+}

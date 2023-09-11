@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력한 값 출력하기2</title>
+
+</head>
+
+<body>
+    <h2>JS 테이블 추가하기</h2>
+    <p>폼 입력양식에 값을 입력하고 추가 버튼을 누르면
+        입력값들을 아래의 테이블에 한줄씩 추가되게 함</p>
+    <form method="post" action="">
+        <label>이름 : <input type="text" id="name"></label>
+        <br>
+        <label>나이 : <input type="text" name="age" id="age"></label>
+        <br>
+        <label>성별 : </label>
+        <input type="radio" name="gender" value="M" id="male"><label for="male"> 남 </label>
+        <input type="radio" name="gender" value="F" id="female"><label for="female"> 여 </label>
+        <br>
+        <label>전화번호 : <input type="tel" id="phone"></label>
+        <br>
+        <label>취미 : </label>
+        <input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie"> 영화보기</label>
+        <input type="checkbox" name="hobby" value="music" id="music"><label for="music"> 음악듣기 </label>
+        <input type="checkbox" name="hobby" value="sport" id="sport"><label for="sport"> 운동 </label>
+        <input type="checkbox" name="hobby" value="reading" id="reading"><label for="reading"> 독서 </label>
+        <input type="checkbox" name="hobby" value="climb" id="climb"><label for="climb"> 등산 </label>
+        <br>
+        <input type="button" value="추가하기" onclick="addUser();">
+        <input type="button" value="초기화" onclick="resetData();">
+    </form>
+    <p id="p3">
+    <table id="tbl" width="500px" border="1" cellspacing="0">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>전화번호</th>
+            <th>취미</th>
+        </tr>
+        <!-- 입력값들을 추가해 나감 -->
+    </table>
+    </p>
+
+    <script>
+        function addUser() {
+            var name = document.querySelector("#name").value;
+            var age = document.querySelector("#age").value;
+            var phone = document.querySelector("#phone").value;
+            var genderTag = document.querySelectorAll("[name=gender]");
+            var hobbyTag = document.querySelectorAll("[name=hobby]");
+
+
+            // 2. 입력되지 않았으면 추가하지 않기
+            if(name == "") {
+                alert("이름을 입력해주세요.");
+                return;
+            }
+            if(age == "") {
+                alert("나이를 입력해주세요.");
+                return;
+            }
+            if(phone == "") {
+                alert("전화번호를 입력해주세요");
+                return;
+            }
+
+            var checkedGender = document.querySelectorAll("[name=gender]:checked");
+            if(checkedGender.length == 0) {
+                alert("성별을 체크해주세요")
+                return false;
+            }
+
+            // if(!genderTag[0].checked && genderTag[1].checked == "") {
+            //     alert("성별을 체크해주세요");
+            //     return;
+            // }
+
+
+            var count = 0;
+            var checkedHobby = document.querySelectorAll("input[name=hobby]:checked");
+            consloe.log(checkedHobby);
+            // 체크의 길이가 0 이여서 선택하지 않은 걸 알 수 있다.
+            if(checkedHobby.length == 0) {
+                alert("취미를 1개 이상 선택해주세요");
+                return false;
+            }
+
+            // for문을 이용해 유효성 검사
+            // for(var k = 0; k < 5; k++) {
+            //     if(hobbyTag[k].checked) {
+            //         count++;
+            //     }
+            // }
+            // if(count == 0) {
+            //     alert("취미는 1개 이상 작성해주세요")
+            //     return false;
+            // }
+
+            // if문을 이용해 유효성 검사
+            // if(!hobbyTag[0].checked
+            // && !hobbyTag[1].checked
+            // && !hobbyTag[2].checked
+            // && !hobbyTag[3].checked
+            // && !hobbyTag[4].checked) {
+            //     alert("취미는 1개 이상 선택해주세요");
+            //     return;
+            // }
+
+            
+            // gender 태그 가져오기
+            // if문 조건문에 해당하는 값이 들어갈 수 있게끔 var gender = ""; 선언
+            var gender = "";
+            //genderTag 가 배열이여서 남 : [0], 여 : [1] 로 들어감. .checked 를 쓰면 체크박스 체크
+            if (genderTag[0].checked) {
+                // 남
+                gender = "남";
+            }
+            if (genderTag[1].checked) {
+                // 여
+                gender = "여";
+            }
+            
+            // hobby 태그 가져오기
+            var hobby = "";
+            for (var i = 0; i < 5; i++) {
+                if(hobbyTag[i].checked) {
+                    hobby += hobbyTag[i].nextSibling.innerText;
+                }
+            }
+            // if(hobbyTag[0].checked) {
+            //     hobby += "영화보기";
+            // }
+            // if(hobbyTag[1].checked) {
+            //     hobby += "음악듣기";
+            // }
+            // if(hobbyTag[2].checked) {
+            //     hobby += "운동";
+            // }
+            // if(hobbyTag[3].checked) {
+            //     hobby += "독서";
+            // }
+            // if(hobbyTag[4].checked) {
+            //     hobby += "등산";
+            // }
+
+            console.log(name + "," + age + "," + phone)
+            var tabelTag = document.querySelector("#tbl");
+            // = 만 쓰면 대체가 되어버리기 때문에 누적하기 위해서 += 를 쓴다.
+            tabelTag.innerHTML += "<tr><td>" + name + "</td><td>" + age + "</td><td>" + gender + "</td><td>" + phone + "</td><td>"+hobby+"</td></tr>"
+            resetData()
+        }
+
+
+        function resetData() {
+            // 1. 입력된 값 초기화하기
+            document.querySelector("#name").value = "";
+            document.querySelector("#age").value = "";
+            document.querySelector("#phone").value = "";
+            // 2. 입력이 되지 않았으면 추가하지 않기
+            document.querySelectorAll("[name=gender]")[0].checked = false;
+            document.querySelectorAll("[name=gender]")[1].checked = false;
+            for (var i = 0; i < 4; i++) {
+                document.querySelectorAll("[name=hobby]")[i].checked = false;
+            }
+        }
+    </script>
+</body>
+</html>

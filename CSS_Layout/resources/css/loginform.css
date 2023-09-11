@@ -1,0 +1,40 @@
+/* div {
+    border: 1px solid black;
+    box-sizing: border-box;
+} */
+#login {
+    width: 300px;
+}
+#login-header {
+    height: 50px;
+}
+    #login-header-layer1 {
+        height: 100%;
+        width: 60%;
+        float: left;
+    }
+        #id-field {
+            height: 50%;
+            width: 100%;
+        }
+        #pw-field {
+            height: 50%;
+            width: 100%;
+            
+        }
+    #login-header-layer2 {
+        height: 100%;
+        width: 40%;
+        float: left;
+        
+    }
+        #btn {
+            margin-top: 3px;
+            margin-left: 5px;
+            width: 50%;
+            height: 90%;
+        }
+#login-footer {
+    height: 30px;
+    text-align: center;
+}

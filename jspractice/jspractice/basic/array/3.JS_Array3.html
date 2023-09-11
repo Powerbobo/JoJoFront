@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자스 배열 문제3</title>
+        <style>
+            .divss {
+                float: left;        
+            }
+        </style>
+    </head>
+    <body>
+        <h1> 배열 실습 문제 3</h1>
+        <br><br>
+        문제5. 다음 보기의 그림을 클릭하면 그림이 사라지고 그림을 모두 클릭하면 클릭한 순서대로 그림이 나올수 있도록 만들어라.<br>
+        <fieldset>
+            <legend>보기</legend>
+            <div id="div5">
+                <div style="border:1px solid black; height:100px; width:100px; background-color:red;" class="divss" onclick="clickDiv(this)" id="red" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:blue;" class="divss" onclick="clickDiv(this)" id="blue" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:green;" class="divss" onclick="clickDiv(this)" id="green" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:pink;" class="divss" onclick="clickDiv(this)" id="pink" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:yellow;" class="divss" onclick="clickDiv(this)" id="yellow" ;></div>
+            </div>
+        </fieldset><br>
+        <script>
+            // 배열을 지역변수로 선언
+            var divArrs = []; // nes Array();
+            // 색상을 저장할 변수
+            var result = "";
+            // 전달값이 존재하기 때문에 전달값을 받기 위해서 매개변수를 넣어준다(매개변수가 정해져있는건 아니지만
+            // 의미있는 단어로 작성)
+            // 매개변수가 있기 대문에 색상을 전부 배열에 담기 위해서 "#"+매개변수 를 입력 해 배열에 전부 담아준다.
+            // function clickDiv(color) {
+            // var selectedDiv = document.querySelector("#"+color)
+            // divArrs.push(selectedDiv);
+            function clickDiv(obj) {
+                // obj(매개변수) = this(<div></div>), document.querySelector("#red")
+                console.log(obj)
+                var selectedDiv = obj
+                divArrs.push(selectedDiv);
+                console.log(divArrs)
+                // 선택한 색상 숨기기
+                selectedDiv.style.display="none"
+                // divArrs 에 담긴 배열이 5개가 되었을 때 div5 에 출력해줌
+                if(divArrs.length > 4){       
+                    divArrs.forEach(function(element, index){
+                        element.style.display = "block";
+                        // outerHTML 은 innerHTML 과 다르게 태그까지 가져온다.
+                        result += element.outerHTML;
+                    })             
+                    // for(var i = 0; i < 5; i++) {
+                    //     divArrs[i].style.display = "block";
+                    //     // outerHTMl > 밖으로 꺼낸다.
+                    //     result += divArrs[i].outerHTMl;
+                    // }
+                    document.querySelector("#div5").innerHTML = result;
+                    divArrs = [];
+                    result = "";
+                }
+            }
+        </script>
+    </body>
+</html>

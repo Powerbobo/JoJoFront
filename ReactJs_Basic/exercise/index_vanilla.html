@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js" crossorigin></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script>
+            let counter = 0;    // 숫자 증가시키기 위해서 선언
+            const root = document.querySelector("#root");
+            let span = React.createElement("span"   // span 태그를 중복해서 선언해서 let으로 선언함
+                                        , {}
+                                        , "Total clicks : 0");
+            const btn = React.createElement("button"
+                                        // 이벤트 사용하는 방법
+                                        , {onClick : () => {
+                                            counter++;  // 버튼 누르면 1씩 증가
+                                            span = React.createElement("span", null, `Total clicks : ${counter }`);
+                                            ReactDOM.render([span, btn], root) // span 과 btn 묶음
+                                        },
+                                        // 스타일 넣는 방법
+                                        style : {backgroundColor : "gold"}
+                                        }
+                                        , "Click me");
+            const containter = React.createElement("div", null, [span, btn]);
+            // ReactDOM.render(span,btn, root); -> () 안에 태그 3개 이상 넣지 못함
+            ReactDOM.render(containter, root);
+        </script>
+    </body>
+</html>

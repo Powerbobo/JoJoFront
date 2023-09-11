@@ -1,0 +1,36 @@
+div {
+    border: 1px black;
+    box-sizing: border-box;
+}
+#header {
+    height: 100px;
+    width: 100%;
+    background-color: red;
+}
+#main {
+    height: 500px;
+    background-color: darkmagenta;
+}
+    #main-layer1 {
+        height: 100%;
+        width: 15%;
+        float: left;
+        background-color: beige;
+    }
+    #main-layer2 {
+        height: 100%;
+        width: 65%;
+        float: left;
+        background-color: darkcyan;
+    }
+    #main-layer3 {
+        height: 100%;
+        width: 20%;
+        float: left;
+        background-color: salmon;
+    }
+#footer {
+    height: 100px;
+    width: 100%;
+    background-color: gold;
+}

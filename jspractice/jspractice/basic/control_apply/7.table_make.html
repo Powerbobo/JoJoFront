@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>자동 테이블 만들기</h1>
+        <button id="btn">테이블 생성</button>
+
+        <script>
+            document.querySelector("#btn").addEventListener("click", function() {
+                var rowNum = prompt("테이블의 행의 갯수는?");
+                var colNum = prompt("테이블의 열의 갯수는?");
+                var count = 1;
+                document.write("<table border='1'>");
+                for(var i = 1; i <= rowNum; i++){
+                    document.write("<tr>");
+                    for(var j = 1; j <=colNum; j++) {
+                        document.write("<td>좌석"+count+"</td>");
+                        count++;
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            })
+        </script>
+    </body>
+</html>

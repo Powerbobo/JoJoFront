@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>현재 시간 보기</title>
+        <style>
+            .container {
+                width: 200px;
+                margin: 50px auto;
+                text-align: center;
+                /* display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh; */
+            }
+            button {
+                border: 1px solid #ccc;
+                background-color: #fff;
+                padding: 20px 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <button id="showTime">현재 시간 보기</button>
+        </div>
+
+        <script>
+            document.querySelector("#showTime").onclick = popupTime;
+            function popupTime() {
+                // 팝업 창이 화면에 중앙에 위치할 수 있게끔 적용하는 수식!
+                // (스크린 width 값 - 팝업 창 width 값)/2
+                // (스크린 height 값 - 팝업 창 height 값)/2
+                var left = (screen.availWidth - 400) / 2;
+                var top = (screen.availHeight - 200) /2 ;
+                // 값을 각 변수에 추가, 
+                var viewOpt = "left=" + left + ", top=" + top + ",width=400, height=200";
+                // 팝업 창 옵션 부분에 변수 추가
+                window.open("../popup/current.html", "", viewOpt);
+            }
+        </script>
+    </body>
+</html>

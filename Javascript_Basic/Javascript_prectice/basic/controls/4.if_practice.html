@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>연습문제4</title>
+        <style>
+            body {
+                font-size: 1.2em;
+                text-align: center;
+            }
+            p {
+                color: #f00;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>3의 배수 찾기</h2>
+        <script>
+            // ,"100" < prompt 창 열렸을때 자동을 100이 뜨게끔 함
+            var inputNumber = prompt("몇 까지의 3의 배수를 찾을까요?", "100");
+            // 3의 배수를 찾았을 때에만 +1이 되어야 함
+            var count = 0;
+            for(var i = 1; i <= inputNumber; i++) {
+                // i의 값 중 3의 배수를 찾는것
+                if(i % 3 === 0) {
+                    // count = count + 1;
+                    // 단항연산자
+                    count++;
+                        if(parseInt(inputNumber/3) != count) {
+                            document.write(i + ",");
+                        } else {
+                            document.write(i);
+                        }
+                }
+            }
+            document.write("<p>" + inputNumber + "까지 3의 배수의 갯수 : " + count + "</p>");
+        </script>
+    </body>
+</html>

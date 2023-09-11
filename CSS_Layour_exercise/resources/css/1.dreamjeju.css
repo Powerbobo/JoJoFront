@@ -1,0 +1,30 @@
+#container {
+    width: 1200px;
+}
+header {
+    height: 100px;
+    background-color: aquamarine;
+}
+#logo {
+    height: 100%;
+    width: 25%;
+    background-color: antiquewhite;
+    float: left;
+}
+#logo h1 {
+    
+}
+nav {
+    height: 100%;
+    width: 75%;
+    background-color: tomato;
+    float: left;
+}
+main {
+    height: 500px;
+    background-color: salmon;
+}
+footer {
+    height: 50px;
+    background-color: seagreen;
+}

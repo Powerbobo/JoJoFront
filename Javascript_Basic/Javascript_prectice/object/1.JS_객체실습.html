@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자스 객체 실습</title>
+    <style>
+        #print {
+            height : 100px;
+        }
+        #div2 {
+            height : 300px;
+            width : 500px;
+            border : 1px solid black;
+        }
+        th, td {
+            height : 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1> 객체 실습 문제 </h1>        
+    문제1. <br>
+    다음 입력 버튼을 클릭하면 이름,나이,주소를 prompt로 입력 받은 후 입력 받은 정보를 <br>
+    member 라는 객체에 저장하여라.<br>
+    이 후 출력 버튼을 클릭하면 member 객체 안에 있는 정보를 <br>
+    출력 창에 출력되도록 만들어라.<br>
+    (입력을 받지 않은 상태에서 출력 버튼 클릭시 입력을 먼저 해달라는 알림을 띄우도록 하여라)<br>
+    ex) <br>
+    이름 : OOO <br>
+    나이 : OO세 <br>
+    주소 : XXX XXX XXXX ... <br>
+
+    <fieldset>
+        <legend style="color:red;">출력창</legend>
+        <div id="print">
+            
+        </div>
+    </fieldset><br>
+
+    <button onclick="insertMember();">입력</button>
+    <button onclick="printMember();">출력</button>
+
+    <br><br>
+    <hr><hr>
+    <br><br>
+    문제2. <br>
+    다음 입력 버튼 클릭시 학생정보를 3명 저장받아(for문 사용) <br>
+    테이블을 생성하여 출력하는 코드를 작성하여라. <br>
+    단, 학생 정보는 객체로 처리하여 저장후 테이블에 입력하고<br>
+    모든 학생 정보는 객체 배열에 저장하여 console.log(objectArr)로 출력시 <br>
+    객체 배열 정보가 console.log에 나와야 함 <br>
+    <div id="div2">
+        <table id="memberInfo" border="1px" width="300px" height="250px">
+            <tr><th>이름</th><th>나이</th><th>주소</th></tr>
+            <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+            <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+            <tr><td name="name"></td><td name="age"></td><td name="addr"></td></tr>
+        </table>
+    </div>  
+    <labal style="color:red;">학생정보 테이블</labal>
+        
+    <button onclick="student();">입력 및 출력</button>
+
+    <script>
+        // 문제 1번
+        // 유효성 체크를 위해 null 로 선언
+        var member = null;
+        // 전역변수 선언
+        //var mamber = "";
+        function insertMember() {
+            var name = prompt("이름을 입력해주세요.");
+            var age = prompt("나이를 입력해주세요.");
+            var address = prompt("주소를 입력해주세요.");
+
+            // 초기화를 위해서 지역변수 선언
+            member = new Object();
+            member.name = name;
+            member.age = age;
+            member.address = address;
+
+            // 유효성 체크1
+            // if(!mamber.name && !member.age && !member.address) {
+            //     alert("값을 다시 입력해 주세요");
+            // }
+
+            // 유효성 체크2
+            // if(!mamber.name || !member.age || !member.address) {
+            //     alert("값을 다시 입력해 주세요");
+            // }
+            
+        }
+        function printMember() {
+
+            // 유효성 체크3 (입력하기 전에 출력버튼 부터 눌렀을 경우)
+            if(!member) {
+                alert("입력버튼부터 눌러주세요");
+                return false;
+            }
+    
+            // 유효성 체크4
+            for(var key in member) {
+                if(!member[key]) {
+                    alert("값을 모두입력해주세요");
+                    return false;
+                }
+            }
+
+            document.querySelector("#print").innerHTML += "이름 : " + member.name + "<br>";
+            document.querySelector("#print").innerHTML += "나이 : " + member.age + "<br>";
+            document.querySelector("#print").innerHTML += "주소 : " + member.address + "<br>";
+        }
+
+        // 문제 2번
+        var objArrs = new Array(); // [];
+        function student() {
+            // 입력부분
+            for(var i = 0; i < 3; i++) {
+                var studentOne = {};
+                studentOne.name = prompt((i+1)+"번째 학생 이름을 입력하세요");
+                studentOne.age = prompt((i+1)+"번째 학생 나이을 입력하세요");
+                studentOne.addr = prompt((i+1)+"번째 학생 주소를 입력하세요");
+                objArrs.push(studentOne);
+                
+            }
+            // 출력부분
+            for(var j = 0; j < objArrs.length; j++) {
+                document.querySelectorAll("[name=name]")[j].innerHTML = objArrs[j].name;
+                document.querySelectorAll("[name=age]")[j].innerHTML = objArrs[j].age;
+                document.querySelectorAll("[name=addr]")[j].innerHTML = objArrs[j].addr;
+            }
+            console.log(objArrs); // * 객체배열
+        }
+
+        
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

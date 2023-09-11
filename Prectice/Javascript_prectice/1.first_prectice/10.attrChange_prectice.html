@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>속성 변경 실습</title>
+        <style>
+            div {
+                border: 1px solid black;
+                background-color: #222;
+                height: 100px;
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>문제 1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h3>
+        <div id="div1"></div>
+        <input type="color">
+        <button>변경</button>
+        <hr><hr><br>
+        <h3>문제 2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h3>
+        <div id="div2"></div>
+        <button>반으로 만들기</button>
+        <button>원본</button>
+        <button>두배로 만들기</button>
+
+        <script>
+
+            // 표준 이벤트 모델
+            document.querySelectorAll("button")[0].addEventListener("click", function() {
+                var colorValue = document.querySelector("[type=color]").value;
+                document.querySelector("#div1").style.backgroundColor=colorValue;
+            });
+            document.querySelectorAll("button")[1].addEventListener("", function() {
+                document.querySelector("#div2").style.width = "50px";
+                document.querySelector("#div2").style.height = "50px";
+            });
+            document.querySelectorAll("button")[2].addEventListener("", function() {
+                document.querySelector("#div2").style.width = "100px";
+                document.querySelector("#div2").style.height = "100px";
+            });
+            document.querySelectorAll("button")[3].addEventListener("", function() {
+                document.querySelector("#div2").style.width = "200px";
+                document.querySelector("#div2").style.height = "200px";
+            });
+
+
+            // 인라인 이벤트 모델
+            document.getElementsByTagName("button");
+            function colorChange() {
+                var colorValue = document.querySelector("[type=color]").value;
+                document.querySelector("#div1").style.backgroundColor=colorValue;
+            }
+            function halfSize() {
+                document.querySelector("#div2").style.width = "50px";
+                document.querySelector("#div2").style.height = "50px";
+            }
+            function defaultSize() {
+                document.querySelector("#div2").style.width = "100px";
+                document.querySelector("#div2").style.height = "100px";
+            }
+            function doubleSize() {
+                document.querySelector("#div2").style.width = "200px";
+                document.querySelector("#div2").style.height = "200px";
+            }
+        </script>
+    </body>
+</html>

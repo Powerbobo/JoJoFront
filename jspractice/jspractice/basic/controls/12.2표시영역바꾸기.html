@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>표시영역 변경하기</title>
+        <style>
+            fieldset {
+                width : 400px;
+                text-align: center;
+                background-color: #dbdbdb;
+            }
+            div.box {
+                background-color: gold;
+                width : 450px;
+                height : 50px;
+                margin : 5px;
+                padding : 10px;
+                display : none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // 첫 화면에서 .box 내용을 숨기도록 하기 위해서 선언
+                displayAllNone(); // 모듈화된 함수 사용
+            })
+
+
+            // 함수 모듈화 
+            function displayAllNone() {
+                // 클릭이 되었을 때 무조건 모든 요소들이 none이 되도록 함.
+                document.querySelectorAll(".box").forEach(function(element, index) {
+                    element.style.display = "none";
+                })
+
+                // for문 이용!
+                // for(var i = 0; i < 3; i++) {
+                //     document.querySelectorAll(".box")[i].style.display = "none";
+                // }
+        }
+
+
+            function showDiv(value) {
+                var titleBox = document.querySelector("#titleBox")
+                var dateBox = document.querySelector("#dateBox")
+                var writerBox = document.querySelector("#writerBox")
+                displayAllNone()
+                switch(value) {
+                    case "title" : 
+                        titleBox.style.display = "block";
+                        // dateBox.style.display = "none";
+                        // writerBox.style.display = "none";
+                    break;
+                    case "date" :
+                        // titleBox.style.display = "none";
+                        dateBox.style.display = "block";
+                        // writerBox.style.display = "none";
+                    break;
+                    case "writer" :
+                        // titleBox.style.display = "none";
+                        // dateBox.style.display = "none";
+                        writerBox.style.display = "block";
+                    break;
+                }                
+            }
+        </script>
+
+
+
+        <h1>JS 표시영역 변경하기</h1>
+        <fieldset>
+            <legend>검색할 항목을 선택하세요.</legend>
+            <input type="radio" name="category" value="title" onclick="showDiv(this.value);" id="title"><label for="title">제목</label>&nbsp; &nbsp; 
+            <input type="radio" name="category" value="date" onclick="showDiv(this.value);"  id="date"><label for="date">날짜</label>&nbsp; &nbsp; 
+            <input type="radio" name="category" value="writer" onclick="showDiv(this.value);" id="writer"><label for="writer">작성자</label>&nbsp; &nbsp;
+        </fieldset>
+        <hr>
+        <div id="titleBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 제목을 입력하세요 : </label>
+                <br> 
+                <input type="search" name="title" size="50"> &nbsp;
+                <input type="submit" value="검색">
+            </form>
+        </div>
+        <div id="dateBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 날짜를 선택하세요 : </label>
+                <br>
+                <input type="date" name="start"> - 
+                <input type="date" name="end"> &nbsp; 
+                <input type="submit" value="검색">
+            </form>
+        </div>
+        <div id="writerBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 작성자 아이디를 입력하세요 : </label>
+                <br>
+                <input type="search" name="writer" size="25"> &nbsp; 
+                <input type="submit" value="검색">
+            </form>
+        </div>
+    </body>
+    </html>

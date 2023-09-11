@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>입력한 값 출력하기</title>
+        <style>
+            #area {
+                width: 400px;
+                height: 150px;
+                background: #ffff99;
+                border: 1px solid #6666ff;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>입력한 값 출력 문제</h2>
+        <label>구매자 : </label>
+        <input type="text" placeholder="구매자의 이름을 입력하세요.">
+        <br>
+        <br>
+        <label>상품명 : </label>
+        <input type="text" id="pname" placeholder="구매 상품명을 입력하세요">
+        <br>
+        <br>
+        <label>가격 : </label>
+        <input type="text" name="price" placeholder="구매 가격을 입력하세요.">
+        <br>
+        <br>
+        <button onclick="printValue();">입력값 출력하기</button>
+        <br>
+        <br>
+        <div id="area"></div>
+
+        <script>
+            function printValue() {
+                // 이름표를 붙여야하는데, 공통적으로 input 태그이기때문에 배열이다.
+                var inputTags = document.getElementsByTagName("input");
+                var customerTag = inputTags[0];
+                var productNameTag = inputTags[1];
+                var printValue = inputTags[2]
+                var divTag = document.getElementById("area");
+                divTag.innerHTML = customerTag.value + ", <br>" + productNameTag.value+", <br>" +printValue.value;
+                // // customerTag.value > 입력한 값을 가져온다.
+                // divTag.innerText = customerTag.value;
+                // divTag.innerText = productNameTag.value;
+                // //innerText는 태그를해도 텍스트로 입력한다. innerHTML는 태그를 사용할 경우 태그가 적용된 값을 불러온다,.
+
+                // 실무에서 사용하는 방법
+                // sum = sum + num;
+                // sum += num; // 복합 대행 연산자 (누적이 된다.)
+                // divTag.innerHTML += "구매자 : " + customerTag.value + "<br>";
+                // divTag.innerHTML += "상품명 : " + productNameTag.value + "<br>";
+                // divTag.innerHTML += "가격 : " + customerTag.value + "<br>";
+            }
+        </script>
+    </body>
+</html>

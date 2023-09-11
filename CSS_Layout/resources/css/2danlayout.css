@@ -1,0 +1,30 @@
+/* 
+div {
+    border:1px solid black;
+    box-sizing: border-box;
+} */
+#header {
+    height: 100px;
+    width: 100%
+}
+#main {
+    height: 500px;
+    background-color: burlywood;
+}
+    #main-layer1 {
+        height: 100%;
+        width: 20%;
+        /* 띄어서 왼쪽으로 정렬 */
+        float: left;
+        background-color: darkseagreen
+    }
+    #main-layer2 {
+        height: 100%;
+        width: 80%;
+        float:  left;
+        background-color: salmon
+    }
+#footer {
+    height: 100px;
+    background-color: slategrey
+}

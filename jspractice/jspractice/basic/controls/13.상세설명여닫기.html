@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #iteam {
+                width: 500px;
+                --height: auto;
+                /* static(기본 값), relative(요소 자기 자신을 기준으로 배치), absolute(부모(조상) 요소를 기준으로 ) */
+                /* fixed(뷰포트 기준으로 배치), stickey(스크롤 영역 기준으로 배치) */
+                position: relative;
+                padding: 15px 20px;
+                margin: auto;
+            }
+            .over {
+                position: absolute;
+                left: 30px;
+                top: 310px;
+                opacity: 1;
+                transition: opacity 1s ease;
+            }
+            button {
+                background-color: rgba(255,255,255,0.4);
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+            .detail {
+                width: 500px;
+                line-height: 1.8;
+                text-align: left;
+                --display: none;
+                opacity: 0;
+                max-height: 0;
+                /* 원하는 효과 - opacity, 1s - 동작 실행되는 시간, ease - 기본값 */
+                transition: opacity 1.5s ease;
+            }
+            .detail.active {
+                opacity: 1;
+                /* 요소의 최대 높이 설정 */
+                max-height: 500px
+            }
+            </style>
+    </head>
+    <body>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelector("#open").addEventListener("click", function() {
+                        // 배열이기때문에 index([0]) 적어줘야함
+                        //docuemnt.querySelectorAll(".detail")[0]
+                        //querySelector 는 index 붙일 필요 없움
+                        //document.querySelector(".detail")
+                        // 배열이 1개더라도 꼭 index를 적어줘야함
+                        // document.getElementsByClassName("detail")[0].style.display = "block";
+                        //document.getElementsByClassName("over")[0].style.display = "none";
+                        //document.getElementsByClassName("detail")[0].style.opacity = "1";
+                        document.getElementsByClassName("detail")[0].classList.add("active")
+                        document.getElementsByClassName("over")[0].style.opacity = "0";
+                        
+                    })
+                    document.querySelector("#close").addEventListener("click", function () {
+                        //document.querySelector("#desc").style.opacity = "0";
+                        document.getElementsByClassName("detail")[0].classList.remove("active")
+                        document.getElementsByClassName("over")[0].style.opacity = "1";
+                    })
+                })
+
+            </script>
+
+        <div id="iteam">
+            <img src="../images/flower1.png" alt="꽃" width="500px">
+            <button id="open" class="over">상세 설명 보기</button>
+            <div id="desc" class="detail">
+                <h4>등심붓꽃</h4>
+                <p>
+                    북아메리카 원산으로 각지에서 관상초로 흔히 심고 있는 귀화식물이다. 
+                    길가나 잔디밭에서 흔히 볼 수 있다. 아주 작은 씨앗을 무수히 많이 가지고 있는데 바람을 이용해 씨앗들을 날려보내거나, 
+                    뿌리줄기를 통해 동일한 개체들을 많이 만들어 냄으로써 번식한다.
+                </p>
+                <button id="close">상세 설명 닫기</button>
+            </div>
+        </div>
+
+    </body>
+</html>

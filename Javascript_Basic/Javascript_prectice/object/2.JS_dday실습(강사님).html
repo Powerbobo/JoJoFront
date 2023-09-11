@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>독서 챌린지</title>
+        <style>
+            .container {
+                border : 2px double #222;
+                border-radius: 50%;
+                width : 300px;
+                height : 300px;
+                text-align: center;
+                margin : 50px auto;
+                background-color: #d8f0fc;
+            }
+            h1 {
+                margin-top: 80px;
+            }
+            .accent {
+                color : red;
+                font-weight: bold;
+                font-size: 1.8em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>책 읽기</h1>
+            <p><span class="accent" id="result">0</span>일 연속으로 <br> 책 읽기를 달성했군요.</p>
+            <p>축하합니다!</p>
+        </div>
+        <div class="container">
+            <h1>종강 D-day</h1>
+            <p>종강까지 <span class="accent" id="lastDay">0</span>일 남았습니다. <br> 화이팅하세요!!</p>
+            <p>열심히 하세요!!</p>
+        </div>
+        <div class="container">
+            <h1>날짜 계산기</h1>
+            <p>시작일로부터 <span class="accent" id="remainDay">0</span>일 후에 종료됩니다. <br> 화이팅하세요!!</p>
+            <p>열심히 하세요!!</p>
+        </div>
+        시작날짜 : <input type="date" name="startTime" id="startTime"> ~
+        종료날짜 : <input type="date" name="endTime" id="endTime">
+        <input type="button" value="계산" id="showResult">
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <script>
+            
+            //var dateArrs = [];
+            var dateObj = {};
+            // 결과를 화면에 출력
+            document.querySelector("#showResult").addEventListener("click", function() {
+                // 시작날짜 가져와서 date 객체로 만듬
+                var now = new Date(dateObj.startTime);
+                // 종료날짜 가져와서 date 객체로 만듬
+                var end = new Date(dateObj.endTime);
+                // 종료날짜에서 시작날짜 뺀 후 밀리초로 계산함
+                var result = end.getTime() - now.getTime();
+                // 하루를 밀리초로 변환한 값으로 나눠서 일 수 를 계산함(반올림도 같이함)
+                result = Math.round(result/(24*60*60*1000));
+                // #remainDay div에 값을 출력함
+                document.querySelector("#remainDay").innerText = result;
+                console.log(result+1);
+                console.log(now);
+            });
+            // 시작날짜 선택 후 dateObj에 값 추가하기
+            document.querySelector("#startTime").addEventListener("change", function() {
+                var startValue = document.querySelector("#startTime").value;
+                //console.log(startValue);
+                dateObj.startTime = startValue;
+                console.log(dateObj);
+                //dateArrs.push(startValue);
+                //console.log(dateArrs);
+            })
+            // 종료날짜 선택 후 dateObj에 값 추가하기
+            document.querySelector("#endTime").addEventListener("change", function() {
+                var endValue = document.querySelector("#endTime").value;
+                //console.log(endValue);
+                dateObj.endTime = endValue;
+                console.log(dateObj);
+                //dateArrs.push(endValue);
+                //console.log(dateArrs);
+            })
+            
+            var now = new Date();
+            var firstDay = new Date("2023-05-15");
+            var dDay = new Date("2023-10-26");
+            
+            var toNow = now.getTime(); // 오늘까지의 시간(밀리초);
+            var toFirst = firstDay.getTime(); // 첫날까지의 시간(밀리초);
+            var passedTime = toNow - toFirst;
+            var remainTime = toNow - dDay;
+            passedTime = Math.round(passedTime/(24*60*60*1000));
+            remainTime = Math.round(Math.abs(remainTime/(24*60*60*1000)));
+            document.querySelector("#result").innerText = passedTime;
+            document.querySelector("#lastDay").innerText = remainTime;
+            console.log(remainTime);
+        </script>
+    </body>
+</html>

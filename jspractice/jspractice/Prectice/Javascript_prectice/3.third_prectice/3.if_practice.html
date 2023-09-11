@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>4의 배수일까</title>
+        <style>
+            div {
+                text-align: center;
+            }
+            div p {
+                font-size: 132%;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var num = prompt("4의 배수를 입력하세요");
+            document.write("<div>")
+            document.write("<h1>4의 배수일까 아닐까</h1>");
+            if(num == null) {
+                alert("숫자를 입력해주세요");
+            }else if(num % 4 == 0) {
+                document.write("<p>"+num+"은 4의 배수가 맞습니다.</p>")
+            }else {
+                document.write("<p>"+num+"은 4의 배수가 아닙니다.</p>")
+            }
+            docuemnt.wrtie("</div>")
+        </script>
+    </body>
+</html>

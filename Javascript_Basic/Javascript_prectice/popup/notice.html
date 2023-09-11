@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>공지사항</title>
+        <style>
+            #area {
+                border: 2px solid skyblue;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            ul {
+                list-style-type: none;
+                margin-left: 15px;
+            }
+            ul li {
+                margin: 10px 5px;
+            }
+            button {
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="area">
+            <h1>공지사항</h1>
+            <ul>
+                <li>항목 1</li>
+                <li>항목 2</li>
+                <li>항목 3</li>
+                <li>항목 4</li>
+                <li>항목 5</li>
+            </ul>
+        </div>
+        <!-- <button onclick="popupClose();">닫기</button> -->
+        <!-- 이벤트 핸들러 없이 닫기 버튼 누르면 바로 처리되게 끔 하는 방법 -->
+        <button onclick="javascript:window.close();">닫기</button>
+
+        <!-- 닫기 버튼으로 창 닫기 -->
+        <!-- <script>
+            function popupClose() {
+                window.close();
+            } -->
+        </script>
+    </body>
+</html>

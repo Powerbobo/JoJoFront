@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세설명 표시하고 닫기</title>
+    <style>
+        #iteam {
+            width: 500px;
+            position: relative;
+        }
+        img {
+            width: 100%;
+        }
+        .over {
+            /* 부모를 기준으로 움직이는 속성값 */
+            position:absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+        .detail {
+            width: 400px;
+            line-height: 1.8;
+            text-align: left;
+            /* 버튼 누르기 전엔 설명이 보이지 않아야 하기 때문에 기본값을 none 으로 설정한다. */
+            --display: none;
+            /* 투명도 속성, 0 > 투명도 값 */
+            opacity: 0;
+            /* 최대 높이 0 > 없는것, transition 효과를 사용하면 높이가 생기기 때문에
+            확실히 안보이게끔 설정해준 값 */
+            max-height: 0;
+            transition: opacity 0.5s ease, max-height 0.5s ease;
+        }
+        button {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        .detail.active {
+            opacity: 1;
+            max-height: 500px
+        }
+    </style>
+
+</head>
+<body>
+    <div id="iteam">
+        <img src="../../../images/flower1.png" alt="꽃1">
+
+
+        <button id="open" class="over">상세 설명 보기</button>
+        </div>
+
+
+        <div id="desc" class="detail active">
+        <h4>등심붓꽃</h4>
+        <p>북아메리카 원산으로 각지에서 관상초로 흔히 심고 있는 귀화식물이다. 길가나 잔디밭에서 흔히 볼 수 있다. 
+            아주 작은 씨앗을 무수히 많이 가지고 있는데 바람을 이용해 씨앗들을 날려보내거나, 
+            뿌리줄기를 통해 동일한 개체들을 많이 만들어 냄으로써 번식한다.
+        </p>
+
+            <button id="close">상세 설명 닫기</button>
+            </div>
+
+
+            <script>
+                document.querySelector("#open").addEventListener("click", function() {
+                    // document.querySelector("#desc").style.opacity = "1";
+                    // document.querySelector("#open").style.opacity = "0";
+                    //document.querySelector("#open").style.display = "block";
+                    document.querySelector("#desc").classList.add("active");
+                    document.querySelector("#open").style.display = "none";
+                })
+                document.querySelector("#close").addEventListener("click", function() {
+                    // document.querySelector("#desc").style.opacity = "0";
+                    // document.querySelector("#open").style.opacity = "1";
+                    document.querySelector("#desc").classList.remove("active");
+                    document.querySelector("#open").style.display = "none";
+                    document.querySelector("#open").style.display = "block";
+                })
+
+                //
+            </script>
+</body>
+</html>

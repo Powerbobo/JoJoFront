@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>table 구구단</title>
+        <style>
+            table {
+                border: 1px solid #ccc;
+                float: left;
+                margin: 20px;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px 15px;
+            }
+            th {
+                background-color: #eee;
+            }
+            td {
+                border: 1px dotted #222;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>구구단</h1>
+        <script>
+            var i = 1;
+            while(i < 10){
+                document.write("<table>");
+                document.write("<tr><th>"+i+"단</th></tr>")
+                i++;
+                var j = 1;
+                while(j < 10){
+                    document.write("<tr><td>")
+                    document.write(i+" * "+j+" = "+i*j+"<br>");
+                    document.write("</td></tr>");
+                    j++
+                }
+                document.write("</table>");
+            }
+        </script>
+    </body>
+</html>

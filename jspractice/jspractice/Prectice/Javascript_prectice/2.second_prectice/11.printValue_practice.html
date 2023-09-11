@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>입력한 값 출력하기</title>
+        <style>
+            #area {
+                border: 1px solid #6666ff;
+                width: 400px;
+                height: 150px;
+                background-color: #ffff99;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>입력한 값 출력 문제</h2>
+        <label for="customer">구매자 : </label>
+        <input type="text" id="customer" placeholder="구매자의 이름을 입력하세요.">
+        <br><br>
+        <label for="product">상품명 : </label>
+        <input type="text" id="product" placeholder="구매 상품명을 입력하세요.">
+        <br><br>
+        <label for="price">가격 : </label>
+        <input type="text" id="price" placeholder="구매 가격을 입력하세요.">
+        <br><br>
+        <button id="btn">입력값 출력하기</button>
+        <br><br>
+        <div id="area"></div>
+
+
+        <script>
+            // 표준함수를 이용
+            // 버튼을 누르면 이벤트를 발생시키기
+            var infor = document.querySelector("#btn");
+            infor.addEventListener("click", function () {
+
+                // 이벤트에 들어갈 값 정해주기
+                var inputTags = document.getElementsByTagName("input");
+                var customerVal = inputTags[0];
+                var productVal = inputTags[1];
+                var priceVal = inputTags[2];
+                var areaVal = document.getElementById("area");
+
+                // 지저분한 방법
+                // areaVal.innerHTML = customerVal.value+", <br>"+productVal.value+", <br>"
+                // +priceVal.value
+
+                //실무에서 사용하는 방법
+                // += 를 쓰는 이유는, 구매자 상품명 가격 값이 누적으로 쌓여야 하기 때문
+                areaVal.innerHTML += "구매자 = "+customerVal.value+"<br>";
+                areaVal.innerHTML += "상품명 = "+productVal.value+"<br>";
+                areaVal.innerHTML += "가격 = "+priceVal.value+"<br>";
+            })
+
+
+        </script>
+    </body>
+</html>

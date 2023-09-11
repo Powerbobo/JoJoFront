@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>색상 복사</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <style>
+            div{
+                border : 2px solid black;
+                width:100px;
+                height:100px;
+                margin: 5px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            $(() => {
+                let color = "";
+                // 복사 할 색상 선택
+                $("#img1").on("click", () => {
+                    alert("빨강 선택!");
+                    color = $("#img1").css("background-color");
+                })
+                $("#img2").on("click", () => {
+                    alert("파랑 선택!");
+                    color = $("#img2").css("background-color");
+                })
+                $("#img3").on("click", () => {
+                    alert("초록 선택!");
+                    color = $("#img3").css("background-color");
+                })
+                $("#img4").on("click", () => {
+                    alert("노랑 선택!");
+                    color = $("#img4").css("background-color");
+                })
+
+                // 복사 한 색상 붙여넣기
+                // for문 사용하기
+                // for(let i = 0; i < 8; i++) {
+                //     $("#"+i+"th").on("click", () => {
+                //         $("#"+i+"th").css("background-color", color);
+                //     })
+                // }
+                
+                // 선택자 이용하기 
+                $("div[id$=th]").on("click", function() {
+                    $(this).css("background-color", color);
+                })
+
+                // 단순 반복
+                // $("#1th").on("click", () => {
+                //     $("#1th").css("background-color", color);
+                // })
+                // $("#2th").on("click", () => {
+                //     $("#2th").css("background-color", color);
+                // })
+                // $("#3th").on("click", () => {
+                //     $("#3th").css("background-color", color);
+                // })
+                // $("#4th").on("click", () => {
+                //     $("#4th").css("background-color", color);
+                // })
+                // $("#5th").on("click", () => {
+                //     $("#5th").css("background-color", color);
+                // })
+                // $("#6th").on("click", () => {
+                //     $("#6th").css("background-color", color);
+                // })
+                // $("#7th").on("click", () => {
+                //     $("#7th").css("background-color", color);
+                // })
+
+                // 초기화
+                $("#btn1").on("click", () => {
+                    $("#1th").css("background-color", "white");
+                    $("#2th").css("background-color", "white");
+                    $("#3th").css("background-color", "white");
+                    $("#4th").css("background-color", "white");
+                    $("#5th").css("background-color", "white");
+                    $("#6th").css("background-color", "white");
+                    $("#7th").css("background-color", "white");
+                })
+            })
+        </script>
+
+
+        문제3<br>
+        다음 2개의 그림 중 선택한 후 복사 될 수 있도록 구현하여라 <br>
+        <fieldset style="width:300px; margin:30px">
+        <legend>2개의 그림 중 선택하시오.</legend>
+        <div id="img1" style="background-color:red;">
+            
+        </div>
+        <div id="img2" style="background-color:blue;">
+            
+        </div>
+        <div id="img3" style="background-color:green;">
+            
+        </div>
+        <div id="img4" style="background-color:gold;">
+            
+        </div>
+    </fieldset>
+
+    <fieldset style="width:800px;  margin:30px">			
+        <legend>복사되는 공간</legend>			 
+        <div id="1th">	
+            
+        </div >
+        <div id="2th">
+            
+        </div>
+        <div id="3th">
+            
+        </div>
+        <div id="4th">
+            
+        </div>
+        <div id="5th">
+            
+        </div>
+        <div id="6th">
+            
+        </div>
+        <div id="7th">
+            
+        </div>
+    </fieldset>
+    <button id="btn1"> 초기화 </button>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>while문으로 구구단 만들기</title>
+        <style>
+            div {
+                border: 1px solid #ccc;
+                display: inline-block;
+                padding: 15px 20px;
+                line-height: 2;
+                margin: 20px 15px;
+            }
+            h3 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            document.write("<h1>구구단</h1>");
+            var i =1;
+            while(i < 10) {
+                document.write("<div>");
+                document.write("<h3>"+i+"단</h3>");
+                var j = 1;
+                while(j < 10) {
+                    document.write(i+" * "+j+" = "+i*j+"<br>");
+                    j++;
+                }
+                document.write("</div>");
+                i++;
+            }
+        </script>
+    </body>
+</html>

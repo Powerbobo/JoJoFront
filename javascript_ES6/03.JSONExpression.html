@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ES6에서는..?</h1>
+    <h2>ES6에 추가된 내용들</h2>
+    <p>
+        Binary and Octal Literals, Template String, let + const, Defalt + Rest + Spreed, 
+        Arrow and Lexical This, Classes, Enhanced Object Literals, Literals Destructuring,
+        Iterators + For ..Of, Generators, Comprehensions, Unicode, Modules, Module Loaders,
+        Map + Set _ WeakMap + WeakSet, Proxies, Symbols, Subclassable Built-ins,
+        Math + Number + String + Objects Apis, Promises, Reflect Api, Tail Calls
+    </p>
+    <h2>공부할 내용들</h2>
+    <p>
+        1. 값, 변수, 컬렉션 <br>
+        - let, const <br>
+        - Template String <br>
+        - 향상된 JSON  표현식 <br>
+        - 객체 비구조화 <br>
+        - 배열 비구조화 <br>
+        - Set <br>
+        - Map <br>
+        <hr>
+        2. 제어구조 <br>
+        - Reset Parameters <br>
+        - Spread Operator <br>
+        <hr>
+        3. 함수 <br>
+        - Default Value <br>
+        - Arrow Function <br>
+        <hr>
+        4. 객체지향 <br>
+        - Class <br>
+        - 은닉화 <br>
+        - Static <br>
+        - 은닉화를 위한 게터/세터 <br>
+    </p>
+    <script>
+        // JSON 표현식
+        let kor = 30;
+        let eng = 55;
+        let math = 77;
+        let exam = { // 원래 JSON 사용하는 방법
+            kor,
+            eng,
+            math
+        }
+        exam = {kor, eng, math};
+        console.log(exam);
+        
+        function createExam(kor, eng, math) {
+            // 변수명으로 객체 속성을 정의
+            // return {kor, eng, math};
+            return {
+                kor : kor,
+                eng : eng,
+                math : math,
+                total() {return kor+eng+math} // 익명함수
+                // total : function() {} -> 기존 익명함수 사용하는 방법
+            };
+        }
+        exam = createExam(55, 66, 77);
+        console.log(exam);
+        console.log(exam.total);
+
+        // #################### 변수의 속성 ####################
+        // ES5 방식
+        let style = {
+            "background-color" : "red",
+            "with" : "100px"
+        }
+        // ES6 방식
+        let cssBg = "background-color";
+        style = {
+            cssBg : "red",
+            width : "100px"
+        }
+        let attr = "eng";
+        // attr = "kor";
+        exam = {
+            [attr] : 10
+        }
+        console.log(exam.attr);
+        console.log(exam.eng);
+        console.log(exam.kor);
+    </script>
+</body>
+</html>

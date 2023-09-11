@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- React 프레임워크 -->
+        <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
+
+        <!-- Babel 라이브러리 -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- js에 작성함! -->
+            <!-- <div>
+                <h1>Minutes to Hours</h1>
+                <label for="minutes">Minutes</label>
+                <input id="minutes">
+                <br />
+                <label for="hours">Hours</label>
+                <input id="hours">
+                <br />
+                <button>리셋</button> <button>리턴</button>
+            </div> -->
+        </div>
+        <script type="text/babel">
+            
+            // 함수형 컴포넌트
+            const MinutesToHours = (evnet) => {
+                const [minutes, setMinutes] = React.useState(0);
+                const [hours, setHours] = React.useState(0);
+                const [isAble, setIsAble] = React.useState(false);
+
+                const handlerMinClick = () => {
+                setHours(Math.round(minutes/60));
+                }
+                const handlerHourClick = () => {
+                    setMinutes(Math.floor(hours*60));
+                }
+                const reset = () => {
+                    setMinutes(0);
+                    setHours(0);
+                }
+                const flip = () => {
+                    setIsAble(!isAble);
+                }
+
+                // 입력한 값을 가져와야 함 event 객체를 만듬
+                const onMinutesChange = (event) => {
+                    // event.target은 input 태그
+                    // 100을 입력하는것은 input태그에 
+                    // change이벤트 발생 onChange로 바인딩
+                    // setMinutes로 minutes값을 변경
+                    // 내가 입력한 값으로 변경하기 위해 event.target.value 사용
+                    const minValue = event.target.value;
+                    setMinutes(minValue);
+                    setHours(Math.round(minValue/60));
+                }
+                const onHoursChange = (event) => {
+                    const hValue = event.target.value;
+                    setHours(hValue);
+                    setMinutes(Math.floor(hValue*60));
+                }
+                <div>
+                    <h1>Minutes to Hours</h1>
+                    <label for="minutes">Minutes</label>
+                    <input 
+                        id="minutes" 
+                        type="number" 
+                        placeholder="분을 입력하세요" 
+                        onChange={onMinutesChange} 
+                        value={minutes} 
+                        disabled={isAble}
+                    /> 
+                    <br />
+                    <label for="hours">Hours</label>
+                    <input 
+                        id="hours" type="number" 
+                        placeholder="시간을 입력하세요" 
+                        onChange={onHoursChange}
+                        value={hours}
+                        disabled={!isAble}
+                    />
+                    <br />
+                    <button onClick={reset}>리셋</button>
+                    <button onClick={flip}>전환</button>
+                </div>
+                
+            }
+            const KilometerToMiles = (evnet) => {
+                // kilometer -> 변수, setKilometer -> 함수
+                // setKilometer는 kilometer를 변경시키는 함수
+                const [kilometer, setKilometer] = React.useState(0);
+                const [mile, setMile] = React.useState(0);
+                const [flipped, setFlipped] = React.useState(false);
+
+                // onChange 이벤트
+                const onKilometerChange = (event) => {
+                    const kNum = event.target.value;
+                    // setKilometer(event.target.value);
+                    setKilometer(kNum);
+                    setMile(kNum*0.6214);
+                }
+                const onMileChange = (event) => {
+                    const mNum = event.target.value;
+                    setMile(mNum);
+                    setKilometer(mNum/0.6214);
+                }
+                const valReset = () => {
+                    setKilometer(0);
+                    setMile(0);
+                }
+                const getFlip = () => {
+                    setFlipped(!flipped);
+                }
+
+                <div>
+                    <h1>Killometers to Miles</h1>
+                    <label for="kilometer">Killometers</label>
+                    <input 
+                        id="kilometer" placeholder="kilometer"
+                        type="number" 
+                        value={kilometer}
+                        // onKilometerChange -> 이벤트 명
+                        onChange={onKilometerChange} disabled={flipped} /><br />
+                    <label for="mile">Miles</label>
+                    <input
+                        id="mile" placeholder="mile"
+                        type="number" 
+                        value={mile}
+                        // onMileChange -> 이벤트 명
+                        onChange={onMileChange} disabled={!flipped} /><br />
+                    <button onClick={valReset}>리셋</button>
+                    <button onClick={getFlip}>전환</button>
+                </div>
+            }
+
+            const root = document.querySelector("#root");
+            function App() {
+                // let menuIndex = '0';
+                const [menuIndex, setMenuIndex] = React.useState('0');
+                const onSelectChange = (event) => {
+                    console.log(event.target.value);
+                    setMenuIndex(event.target.value);
+                }
+                return (
+                    // strict(엄격)모드로 동작중
+                    // if 문을 사용할 수 없어서 삼항연산자를 사용함!
+                <div>
+                    <h1>Hot Converter</h1>
+                    <select onChange={onSelectChange}>
+                        <option value='0'>select converter</option>
+                        <option value='1'>Minutes to Hours</option>
+                        <option value='2'>Killometers to Miles</option>
+                    </select>
+                    {menuIndex === '0' ? <h2>컨버터를 선택하지 않았어요, 컨버터를 선택해주세요.</h2> : null}
+                    {menuIndex === '1' ? <MinutesToHours /> : null}
+                    {menuIndex === '2' ? <KilometerToMiles /> : null}
+                </div>
+                )
+            }
+                ReactDOM.render(<App />, root);
+        </script>
+    </body>
+</html>

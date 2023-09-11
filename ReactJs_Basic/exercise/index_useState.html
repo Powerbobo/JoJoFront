@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- React 프레임워크 -->
+        <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
+
+        <!-- Babel 라이브러리 -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            // h1, button
+            // "Total Clicks : " + "counter" + ""
+            const root = document.querySelector("#root");
+            // let counter = 0;
+            // function countUp() {
+            //     counter++;
+            // }
+            // 함수형 컴포넌트
+            function App() {
+                // React.useState -> 배열을 만들어 줌, 뒷 값은 함수로 받음
+                // const data = React.useState(0);
+                // console.log(data);
+                // counter -> 여기서 바로 변수 선언, 변화해야하는 값
+                const [counter, setCounter] = React.useState(0); // 초기값
+                const handlerClick = () => {
+                    setCounter(counter+1); // 변화시키는 값
+                }
+                const [status, setText] = React.useState("OPEN");
+                const handelerChange = () => {
+                    setText("CLOSE");
+                }
+                return (
+                    <div>
+                        <h1>Total Clicks : {counter}</h1>
+                        <button onClick={handlerClick}>Click Me</button>
+                        <h2>State : {status}</h2>
+                        <button onClick={handelerChange}>Change Text</button>
+                    </div>
+                )
+            }
+            // ReactDOM.render([Hone, Btn], root); -> 함수형 컴포넌트는 이 형태로 사용 불가능함
+            function render() {
+                ReactDOM.render(<App />, root);
+            }
+            render();   // 처음 시작할 때 render 될 수 있도록 작성함.
+
+
+
+
+
+            // // h1, button
+            // // "Total Clicks : " + "counter" + ""
+            // const root = document.querySelector("#root");
+            // let counter = 0;
+
+            // // 함수형 컴포넌트
+            // // id값으로 div 가져오기
+            // function Hone() {
+            //     return (
+            //         <h1>Total Clicks : {counter}</h1>
+            //     )
+            // }
+            // function Btn() {
+            //     return (
+            //         // <button onClick={()=>{}}>Click Me</button> -> 버튼에 이벤트 추가
+            //         // {} 안에 동작하고 싶은 이벤트 작성
+            //         // <button onClick={()=>{counter++; render();}}>Click Me</button>
+            //         <button onClick={countUp}>Click Me</button>
+            //     )
+            // }
+            // // 함수형 컴포넌트 여러개를 한 컴포넌트에 넣어줌
+            // function Container() {
+            //     return (
+            //         <div>
+            //             <Hone />
+            //             <Btn />    
+            //         </div>
+            //     )
+            // }
+            // // ReactDOM.render([Hone, Btn], root); -> 함수형 컴포넌트는 이 형태로 사용 불가능함
+            // function render() {
+            //     ReactDOM.render(<Container />, root);
+            // }
+            // function countUp() {
+            //     counter++; render();
+            // }
+            // render();   // 처음 시작할 때 render 될 수 있도록 작성함.
+        </script>
+    </body>
+</html>

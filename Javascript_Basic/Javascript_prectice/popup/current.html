@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>현재 시간</title>
+        <style>
+            .container {
+                border: 1px double skyblue;
+                --width: 200px;
+                --margin: 100px auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* min-height : 최소 높이를 설정 */
+                /* 100vh : 브라우저 창의 100%를 다 쓰겠다는 의미 */
+                /* 원래 height를 따로 주지 않으면, 글씨 크기 만큼만 길이가 주어지는데,
+                min-height 에 100vh 를 적용하면 내가 보고있는 창 정 가운데 위치하게 된다. */
+                min-height: 100vh; /* vw : 넓이 지정 참고 */
+                }
+                p {
+                    font-size: 1.2em;
+                }
+                .display {
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    color: blue;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <p>현재 시각 <span id="current" class="display"></span></p>
+            
+            <script>
+                // setInterval(function(){}, 1000) > 익명함수인데, 하단에 displayTime() 이라는 선언적 함수를 넣고
+                // 익명함수 자리에 넣어주면 선언적함수를 사용할 수 있다.
+                // setInterval(displayTime, 1000); // 1c=초마다 시간 계산 실행
+                // 
+                // function displayTime() {}
+
+                setInterval(displayTime, 1000); // 1초마다 시간 계산 실행
+                function displayTime() {
+                    var now = new Date();
+                    var currentTime = now.toLocaleTimeString();
+                    document.querySelector("#current").innerText = currentTime;
+                }
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>4의 배수</title>
+        <style>
+            body {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>4의 배수일까 아닐까</h2>
+        <script>
+            // 숫자를 입력하세요
+            var num = prompt("숫자를 입력하세요", "4")
+
+            // null체크하면 취소 눌렀을 때 동작하는 코드 추가 가능
+            if(num !== null){
+                // if문 이용, %연산자 사용
+                if(num % 4 === 0) {
+                    document.write(num+"는 4의 배수가 맞습니다.");
+                }else {
+                    document.write(num+"는 4의 배수가 아닙니다.");
+                }
+            }else {
+                document.write("취소하셨습니다.");
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배경색 바꾸기</title>
+        <style>
+            a:link, a:visited {
+                text-decoration: none;
+                color: #222;
+                display: block;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+                width: 500px;
+                margin: 10px auto;
+            }
+            ul li {
+                --float: left;
+                display: inline-block;
+                width: 120px;
+                border: 1px solid #ccc;
+                padding: 10px 15px;
+                text-align: center;
+            }
+            div {
+                width: 500px;
+                height: 300px;
+                border:2px solid #ccc;
+                border-radius: 15px;
+                margin: 30px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="#" onclick="changBg('green');">Green</a></li>
+            <li><a href="#" onclick="changBg('orange');">Orange</a></li>
+            <li><a href="#" onclick="changBg('purple');">Purple</a></li>
+        </ul>
+        <div id="result"></div>
+
+
+        <script>
+            // 매개변수
+            function changBg(color) {
+                //querySelector, getElementById 2개의 함수 중 원하는 함수 사용 가능하다.
+                document.querySelector("#result").style.backgroundColor = color;
+                //document.getElementById("result")
+
+            }
+        </script>
+    </body>
+</html>

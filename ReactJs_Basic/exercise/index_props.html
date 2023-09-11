@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>props</title>
+        <!-- React 프레임워크 -->
+        <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
+
+        <!-- Babel 라이브러리 -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            const root = document.querySelector("#root");
+
+            function H1() {
+                return (
+                    <div>
+                            <h1>Props 배우기</h1>
+                    </div>
+                )
+            }
+
+            function Btn(Props) {
+                return (
+                    <button 
+                    onClick={() => {alert("clicked")}}
+                    style={{
+                        backgroundColor : "gold",
+                        color : "black",
+                        padding : "10px 20px",
+                        margin : "5px",
+                        borderRadius : 10
+                    }}
+                    >{Props.name}, {props.color}</button>
+                )
+            }
+            // React 사용 시 함수형 컴포넌트 생각 먼저
+            function App() {
+                return (
+                    <div>
+                        <H1 />
+                        <Btn name="Save" color="pink" />
+                        <Btn name="Update" />
+                        <Btn name="Delete" />
+                        <Btn name="Submit" />
+                    </div>
+                )
+            }
+            ReactDOM.render(<App />, root);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 조작 메소드</title>
+    <style>
+        table { border : 1px solid black; }
+        th,td { border : 1px solid black; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <script>
+        const add = () => {
+            // 입력 된 값들을 title 변수에 넣기
+            const title = $("[name=title]").val();
+            const content = $("[name = content]").val();
+            const writer = $("[name=owner]").val();
+            // 제대로 저장되는지 확인하기!
+            // console.log(title);
+            // console.log(content);
+            // console.log(writer);
+
+            // append 메소드 > 리스트 안 문자열의 마지막에 추가하는 메소드
+            $("table").append("<tr><td>"+title+"</td><td>"+content+"</td><td>"+writer+"</td></tr>");
+
+            // 입력한 내용 초기화
+            $("[name=title]").val("");
+            $("[name=content]").val("");
+            $("[name=owner]").val("");
+        }
+    </script>
+    제목 : <input type="text" name="title"><br> 
+    내용 : <input type="text" name="content"><br>
+    작성자 : <input type="text" name="owner"><br>
+    <input type="button" value="테이블에 추가" onclick="add();">
+    <table>
+        <tr>
+            <td>제목</td>    
+            <td>내용</td>
+            <td>작성자</td>
+        </tr>
+    </table>
+</body>
+</html>

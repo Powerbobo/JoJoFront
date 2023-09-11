@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <!-- Babel 라이브러리 추가 -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <!-- 공간 만들기 -->
+        <div id="root"></div>
+        <script type="text/babel"> // Babel 라이브러리 사용하겠다고 선언
+            let counter = document.querySelector("#root");
+            let hone = <h1>Total Clicks : 0</h1>;
+            const Button = <button>Click Me</button>;
+            // const button = function() {
+            //     <button>
+            //         onClick={ 
+            //             () =>{
+            //                 alert("clicked")
+            //                 // span = <span>Total Click : 0</span>
+            //             }
+            //         }
+            //         Click Me
+            //     </button>
+            // };
+            // const countainer = React.createElement("div", null, [hone, button]);
+            const Container = (
+                <div>
+                
+                    </div>
+            );
+            ReactDOM.render(countainer, root);
+
+
+
+
+            // div 에 글 작성하기
+            // 기존 방식
+            // const root = document.querySelector("#root");
+            // const span = document.createElement("span");
+            // span.innerText = "hi";
+            // root.appendChild(span);
+
+            // React 사용
+            // const root = document.querySelector("#root");
+            // const span = React.createElement("span", {}, "Hello React");
+            // const span = <span>Hello, React</span>
+            // ReactDOM.render(span, root);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery filter() 메소드</title>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(() => {
+                $(".first:eq(0)").css("color", "red");
+                $(".first:eq(1)").css("color", "yellow");
+                $(".second:eq(0)").css("color", "orange");
+                $(".second:eq(1)").css("color", "blue");
+                $(".third:eq(0)").css("color", "green");
+                $(".third:eq(1)").css("color", "navy");
+            })
+        </script>
+
+        <ol>
+            <li class="first"><h2>1-1</h2></li>
+            <li class="second"><h2>1-2</h2></li>
+            <li class="first"><h2>1-3</h2></li>
+        </ol>
+        <ul>
+            <li class="third">
+                <h2>2-1</h2>
+            </li>
+        </ul>
+        <ul>
+            <li class="second">
+                <h2>2-2</h2>
+            </li>
+        </ul>
+        <ul>
+            <li class="third">
+                <h2>2-3</h2>
+            </li>
+        </ul>
+    </body>
+</html>

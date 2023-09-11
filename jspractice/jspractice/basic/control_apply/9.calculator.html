@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>계산기 실습</title>
+    </head>
+    <body>
+        <h2>간이 계산기 만들기</h2>
+        첫번째 값 : <input type="text" id="input1"> <br>
+        두번째 값 : <input type="text" id="input2"> <br>
+        <!-- <button>+</button> -->
+        <input type="button" value="+" onclick="calculate(this.value);">
+        <input type="button" value="-" onclick="calculate(this.value);">
+        <input type="button" value="x" onclick="calculate(this.value);">
+        <input type="button" value="/" onclick="calculate(this.value);">
+        <input type="button" value="%" onclick="calculate(this.value);">
+        <br><br>
+        계산결과 : <span id="result"></span>
+        <script>
+            function calculate(value) {
+                var input1 = parseInt(document.querySelector("#input1").value);
+                var input2 = parseInt(document.querySelector("#input2").value);
+                var result = 0;
+                // if(value == "+") {
+                //     result = input1 + input2;
+                // }else if(value == "-") {
+                //     result = input1 - input2;
+                // }else if(value == "x") {
+                //     result = input1 * input2;
+                // }else if(value == "/") {
+                //     result = input1 / input2;
+                // }else if(value == "%") {
+                //     result = input1 % input2;
+                // }
+
+                    switch(value) {
+                        case '+' : result = input1 + input2; break;
+                        case '-' : result = input1 - input2; break;
+                        case 'x' : result = input1 * input2; break;
+                        case '/' : result = input1 / input2; break;
+                        case '%' : result = input1 % input2; break;
+                    }
+
+                var spanTag = document.querySelector("#result");
+                spanTag.innerText = result;
+            }
+        </script>
+    </body>
+</html>

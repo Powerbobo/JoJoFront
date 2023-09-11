@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자스 배열 문제3</title>
+        <style>
+            .divss {
+                float: left;        
+            }
+        </style>
+    </head>
+    <body>
+        <h1> 배열 실습 문제 3</h1>
+        <br><br>
+        문제5. 다음 보기의 그림을 클릭하면 그림이 사라지고 그림을 모두 클릭하면 클릭한 순서대로 그림이 나올수 있도록 만들어라.<br>
+        <fieldset>
+            <legend>보기</legend>
+            <div id="div5">
+                <div style="border:1px solid black; height:100px; width:100px; background-color:red;" class="divss" onclick="clickDiv('red')" id="red" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:blue;" class="divss" onclick="clickDiv('blue')" id="blue" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:green;" class="divss" onclick="clickDiv('green')" id="green" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:pink;" class="divss" onclick="clickDiv('pink')" id="pink" ;></div>
+                <div style="border:1px solid black; height:100px; width:100px; background-color:yellow;" class="divss" onclick="clickDiv('yellow')" id="yellow" ;></div>
+            </div>
+        </fieldset><br>
+        <script>
+            // 1. 배열 만들기 (전역변수로 만들기)
+            var str = "";
+            var divArrs = []; // new Array();
+
+            function clickDiv(color) {
+                
+                // 2. 배열에 선택한 것 넣기
+                var selectedDiv = document.querySelector("#"+color);
+                divArrs.push(selectedDiv);
+                console.log(divArrs);
+                
+                // 3. 선택한 것은 안보이게 하기
+                selectedDiv.style.display = "none";
+                
+                // 4. 다 담았는지 확인하고 출력하기
+                //index를 이용 해 출력하기
+                // if(divArrs.length > 4) {
+                //     for(var i = 0; i < divArrs.length; i++) {
+                //         divArrs[i].style.display = "block";
+                //         //누적해 놓은 걸 밖으로 꺼내기 위해 outerHTML 사용
+                //         str += divArrs[i].outerHTML;
+                //     }
+                //     document.querySelector("#div5").innerHTML = str;
+
+                    // shift 를 이용 해 출력하기
+                if(divArrs.length > 4) {
+                    // shift를 사용핼 땐 .length 를 사용할 수 없다.
+                    for(var i = 0; i < 5; i++) {
+                        var storedDiv = divArrs.shift();
+                        storedDiv.style.display = "block";
+                        str +=storedDiv.outerHTML;
+                    }
+                    document.querySelector("#div5").innerHTML = str;
+                    // 1회성이 아니라 계속 동작시키기 위해서 초기화 시키기
+                    divArrs = [];
+                    str = "";
+                }
+            }
+        </script>
+    </body>
+</html>

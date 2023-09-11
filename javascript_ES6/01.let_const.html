@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ES6에서는..?</h1>
+    <h2>ES6에 추가된 내용들</h2>
+    <p>
+        Binary and Octal Literals, Template String, let + const, Defalt + Rest + Spreed, 
+        Arrow and Lexical This, Classes, Enhanced Object Literals, Literals Destructuring,
+        Iterators + For ..Of, Generators, Comprehensions, Unicode, Modules, Module Loaders,
+        Map + Set _ WeakMap + WeakSet, Proxies, Symbols, Subclassable Built-ins,
+        Math + Number + String + Objects Apis, Promises, Reflect Api, Tail Calls
+    </p>
+    <h2>공부할 내용들</h2>
+    <p>
+        1. 값, 변수, 컬렉션 <br>
+        - let, const <br>
+        - Template String <br>
+        - 향상된 JSON  표현식 <br>
+        - 객체 비구조화 <br>
+        - 배열 비구조화 <br>
+        - Set <br>
+        - Map <br>
+        <hr>
+        2. 제어구조 <br>
+        - Reset Parameters <br>
+        - Spread Operator <br>
+        <hr>
+        3. 함수 <br>
+        - Default Value <br>
+        - Arrow Function <br>
+        <hr>
+        4. 객체지향 <br>
+        - Class <br>
+        - 은닉화 <br>
+        - Static <br>
+        - 은닉화를 위한 게터/세터 <br>
+    </p>
+    <script>
+        var x = 30;
+        // console.log(x)
+        // console.log(window.x);  // var에서는 전역변수 window에 포함
+                                // let에서는 window에 포함되지 않음.
+
+        var x = 50;             // 변수의 중복가능
+        // identifier 'x' has already been declared
+        // let에서는 변수의 중복 불가능
+        // console.log(x)
+
+        // ##########################################
+        {
+            let k = 30; // k is not defined -> let 은 지역변수로밖에 사용할 수 없음
+        }
+        // console.log(k);
+        
+        function getValue(condition) {
+            // var value = "";
+            // let value = "";
+            if(condition) {
+                let value = "red";  // let은 전역변수로 {} 안에서 역할이 끝남
+                return value;
+            } else {
+                return value;
+                // value is not defined -> 변수를 let 으로 선언하면 {} 안에서 let의 역할이 끝나기 떄문에 오류
+            }
+        }
+        // console.log(getValue(true));
+        // console.log(getValue(false));
+
+        let North = 1;
+        const South = 0;
+        North = 11;
+        South = 10; // Assignment to constant variable, const 재할당 불가능
+        console.log(North);
+        console.log(South);
+    </script>
+</body>
+</html>

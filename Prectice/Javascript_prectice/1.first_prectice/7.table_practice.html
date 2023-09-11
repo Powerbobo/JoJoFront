@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자동 테이블 만들기</title>
+    </head>
+    <body>
+        <h1>자동 테이블 만들기</h1>
+        <button id="btn">테이블 생성</button>
+        <script>
+            var btn1 = document.querySelector("#btn"); 
+            btn1.addEventListener("click",function() 
+            {
+                var row = prompt("숫자를 입력하세요");
+                var col = prompt("숫자를 입력하세요");
+                var count = 1;
+                document.write("<table border='1'>")
+                for(var i=1; i <= row; i++) {
+                    document.write("<tr>");
+                    for(var j=1; j <= col; j++) {
+                        document.write("<td>"+count+"</td>");
+                        count++;
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            })
+        </script>
+    </body>
+</html>

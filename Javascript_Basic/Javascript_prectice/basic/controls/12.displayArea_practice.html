@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>표시영역 변경하기</title>
+        <style>
+            fieldset {
+                width : 400px;
+                text-align: center;
+                background-color: #dbdbdb;
+            }
+            div.box {
+                background-color: gold;
+                width : 450px;
+                height : 50px;
+                margin : 5px;
+                padding : 10px;
+                display : none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>JS 표시영역 변경하기</h1>
+        <fieldset>
+            <legend>검색할 항목을 선택하세요.</legend>
+            <input type="radio" name="category" value="title" onclick="showDiv(this.value);" id="title"><label for="title">제목</label>&nbsp; &nbsp; 
+            <input type="radio" name="category" value="date" onclick="showDiv(this.value);"  id="date"><label for="date">날짜</label>&nbsp; &nbsp; 
+            <input type="radio" name="category" value="writer" onclick="showDiv(this.value);" id="writer"><label for="writer">작성자</label>&nbsp; &nbsp;
+        </fieldset>
+        <hr>
+        <div id="titleBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 제목을 입력하세요 : </label>
+                <br> 
+                <input type="search" name="title" size="50"> &nbsp;
+                <input type="submit" value="검색">
+            </form>
+        </div>
+        <div id="dateBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 날짜를 선택하세요 : </label>
+                <br>
+                <input type="date" name="start"> - 
+                <input type="date" name="end"> &nbsp; 
+                <input type="submit" value="검색">
+            </form>
+        </div>
+        <div id="writerBox" class="box">
+            <form method="post" action="">
+                <label> 검색할 작성자 아이디를 입력하세요 : </label>
+                <br>
+                <input type="search" name="writer" size="25"> &nbsp; 
+                <input type="submit" value="검색">
+            </form>
+        </div>
+
+        <script>
+            function showDiv(value) {
+                // 제목, 날짜, 작성자가 class 로 묶여있어서 클래스를 가져올 수 있는 변수를 만듬
+                // querySelector() 안에 들어가는 id 에 따라 나오는 박스가 변하기 때문에 # + value + Box 를 넣어서
+                // 클릭했을때마다 value 값을 넘겨주게끔 했다.
+                // >> var boxTag = document.querySelector("#" + value + "Box");
+
+                // style.backgroundColor
+                // style.height
+                // style.borderStyle
+                // style.borderWidth
+                // style.display
+                // >> boxTag.style.display = "block"; 
+
+                    var titleBox = document.querySelector("#titleBox");
+                    var dateBox = document.querySelector("#dateBox");
+                    var writerBox = document.querySelector("#writerBox");
+                
+                    // if문 사용
+                // if(value == "title") {
+                //     // 제목만 display : block;
+                //     titleBox.style.display = "block";
+                //     // 나머지는 none;
+                //     dateBox.style.display = "none";
+                //     writerBox.style.display = "none";
+                // }else if(value == "date") {
+                //     // 날짜만 display : blcok;
+                //     dateBox.style.display = "block";
+                //     // 나머지는 none;
+                //     titleBox.style.display = "none";
+                //     writerBox.style.display = "none";
+                // }else if(value == "writer") {
+                //     // 작성자만 display : block;
+                //     writerBox.style.display = "block";
+                //     // 나머지는 none;
+                //     titleBox.style.display = "none";
+                //     dateBox.style.display = "none";
+                // }
+
+                    // switch문 사용
+                switch(value) {
+                    case "title" : 
+                            titleBox.style.display = "block";
+                            dateBox.style.display = "none";
+                            writerBox.style.display = "none"; break;
+                    case "date" : 
+                            dateBox.style.display = "block";
+                            titleBox.style.display = "none";
+                            writerBox.style.display = "none"; break;
+                    case "writer" : 
+                            writerBox.style.display = "block";
+                            titleBox.style.display = "none";
+                            dateBox.style.display = "none"; break;
+                }
+            }
+        </script>
+
+    </body>
+</html>

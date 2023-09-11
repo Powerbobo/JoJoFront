@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>ES6에서는..?</h1>
+        <h2>ES6에 추가된 내용들</h2>
+        <p>
+            Binary and Octal Literals, Template String, let + const, Defalt + Rest + Spreed, 
+            Arrow and Lexical This, Classes, Enhanced Object Literals, Literals Destructuring,
+            Iterators + For ..Of, Generators, Comprehensions, Unicode, Modules, Module Loaders,
+            Map + Set _ WeakMap + WeakSet, Proxies, Symbols, Subclassable Built-ins,
+            Math + Number + String + Objects Apis, Promises, Reflect Api, Tail Calls
+        </p>
+        <h2>공부할 내용들</h2>
+        <p>
+            1. 값, 변수, 컬렉션 <br>
+            - let, const <br>
+            - Template String <br>
+            - 향상된 JSON  표현식 <br>
+            - 객체 비구조화 <br>
+            - 배열 비구조화 <br>
+            - Set <br>
+            - Map <br>
+            <hr>
+            2. 제어구조 <br>
+            - Reset Parameters <br>
+            - Spread Operator <br>
+            <hr>
+            3. 함수 <br>
+            - Default Value <br>
+            - Arrow Function <br>
+            <hr>
+            4. 객체지향 <br>
+            - Class <br>
+            - 은닉화 <br>
+            - Static <br>
+            - 은닉화를 위한 게터/세터 <br>
+        </p>
+        <script>
+            // #1. JS에서 클래스는 Function을 이용한다.
+            // function Exam(kor = 0, eng = 0, math = 0) { // ES6 초기값 세팅
+            function Exam(kor, eng, math) { // function 을 사용하여초기값 세팅
+                // 멤버변수 선언
+                // this.kor = 0;    // ES6 초기값 세팅
+                // this.eng = 0;
+                // this.math = 0;
+                this.kor = kor || 0 // -> 기존 초기값 세팅 방법
+                this.kor = kor || 0 // -> 기존 초기값 세팅 방법
+                this.kor = kor || 0 // -> 기존 초기값 세팅 방법
+            }
+            let exam = new Exam();
+
+            // #2.
+            let protoData = {name : "일용자", age : 33}; // 객체 생성
+            function Person() {
+
+            }
+            Person.prototype = protoData; // 클래스 선언
+            Person.prototype.introduce = function() {
+                return "안녕하세요" + this + "반갑습니다.";
+            }
+            let person = new Person();
+            console.log(`exam.kor:${exam.kor }`); // kor의 값이 출력됨 -> 0
+            console.log(typeof exam);
+            console.log(typeof person);
+
+            // ES6에서의 새로운 방식\
+            {
+                // 그렇다면 private는 어떻게 사용하는가?
+                // -> 은닉화 방법
+                class Exam {
+                    #kor; // -> private 으로 멤버변수 선언
+                    #eng;
+                    #math;
+                    // static 멤버 정의하기
+                    static #msg = "Exam 클래스 정보"; // -> 전역변수로 선언
+                    // constructor -> 생성자
+                    constructor(kor=0, eng=0, math=0) { // 초기값 세팅
+                        // this.kor = kor;
+                        // this.eng = eng;
+                        // this.math = math;
+                        this.#kor = kor;    // -> private 은 앞에 #을 붙여줘야 함.
+                        this.#eng = eng;
+                        this.#math = math;
+                        // this.#msg = "Exam 클래스 정보"; -> static 사용 안하고 지역변수로 선언할 때.
+                        
+                    }
+
+                    // getter, setter 선언
+                    // getKor() {
+                    //     return this.#kor;
+                    // }
+                    // setKor(kor) {
+                    //     this.#kor = kor;
+                    // }
+                    // getEng() {
+                    //     return this.#eng;
+                    // }
+                    // setEng(eng) {
+                    //     this.#eng = eng;
+                    // }
+                    // getMath() {
+                    //     return this.#math;
+                    // }
+                    // setMath(math) {
+                    //     this.#math = math;
+                    // }
+
+                    // 속성명으로 getter setter 선언할 수 있음
+                    get kor() {
+                        return this.#kor;
+                    }
+                    set kor(kor) {
+                        this.#kor = kor;
+                    }
+                    get eng() {
+                        return this.#eng;
+                    }
+                    set eng(eng) {
+                        this.#eng = eng;
+                    }
+                    get math() {
+                        return this.#math;
+                    }
+                    set math(math) {
+                        this.#math = math;
+                    }
+
+
+                    #total() { // -> 함수도 private으로 선언 해 은닉화를 할 수 있다.
+                        return this.#kor + this.#eng + this.#math;
+                    }
+                    avg() {
+                        return this.#total()/3.0
+                    }
+                    // print() {
+                    //     // return this.#msg; -> 그냥 private 으로 선언했을 떄 이렇게 메소드 작성
+                    //     return Exam.#msg; // -> static 으로 전역변수 선언했을 때 이렇게 메소드 작성
+                    // }
+                    static print() {
+                        // return this.#msg; -> 그냥 private 으로 선언했을 떄 이렇게 메소드 작성
+                        return Exam.#msg; // -> static 으로 전역변수 선언했을 때 이렇게 메소드 작성
+                    }
+                }
+                let exam = new Exam(11, 22, 33);
+                // 생성자에서 초기값 세팅 후 합계와 평균을 구하는 메소들 만들고, 
+                // let exam = new Exam(11, 22, 33); 으로 원하는 점수를 넣어 값을 구함
+                // console.log(exam.total());  
+                // console.log(exam.avg());
+                // console.log(exam.kor);
+                // console.log(exam.print()); // private 일 경우 이렇게 출력
+                console.log(Exam.print());    // 메소드가 static 으로 만든 경우 메소드 앞에 클래스를 붙여야 함.
+                // exam.setKor(33);    // getter setter 선언한 후 set 으로 값 세팅해주기
+                // console.log(exam.getKor);   // get으로 값 가져오기
+
+                // getter setter 속성명으로 선언했을 때 사용하는 방법
+                exam.kor = 33;
+                console.log(exam.kor);
+
+                // static이 아닐 경우 this 를 사용하고, static 일 경우 클래스를 사용한다.
+            }
+            class Product {
+                constructor(name, price) {
+                    this.name = name || "토비의 스프링";
+                    this.price = price || 35000;
+                }
+
+                introduce() {
+                    return this.name + "의 가격은 " + this.price;
+                }
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 조작 메소드</title>
+    <!-- <script src="../../jQuery_exercise/vendor/js/jquery-3.7.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <script>
+        // 파일 추가하기
+        const addFile = () => {
+            // after() -> 선택한 요소 뒤에 새 요소를 추가
+            // 선택한 요소 중에서 마지막 요소를 선택
+            // after 함수 사용해서 파일선택 input태그를 추가함
+            // input 의 마지막 요소 뒤에 추가시키기 위해서 last() 사용 
+            $("input").last().after("<input type='file'>");
+        }
+
+        // 파일 삭제하기
+        const delFile = () => {
+            // 파일선택의 길이 = 파일선택의 숫자
+            const fileLength = $("[type=file]").length;
+            // 파일선택이 2개 이상 있을때만(1개있을때는 실행x) 마지막 input 태그 삭제
+            // 파일선택 input 태그를 추가했다가 삭제하는건데, 계속 삭제하다보면 마지막 input 태그가 삭제가 되기 때문에
+            // 파일선택 태그가 1개 남았을 때는 실행시키지 않게 하기 위해서 if문 추가
+            if(fileLength > 1)$("input").last().remove();
+        }
+    </script>
+    <div>
+        <input type="file">
+        <input id="add" type="button" value="추가" onclick="addFile();">        
+        <input type="button" value="삭제" onclick="delFile();">        
+    </div>
+    <br>    
+</body>
+</html>

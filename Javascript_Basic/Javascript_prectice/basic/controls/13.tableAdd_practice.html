@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>입력한 값 출력하기2</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h2>JS 테이블 추가하기</h2>
+        <p>폼 입력양식에 값을 입력하고 추가 버튼을 누르면
+            입력값들을 아래의 테이블에 한줄씩 추가되게 함</p>
+
+        <form method="post" action="">
+            <label>이름 : <input type="text" id="name"></label>
+            <br>
+            <label>나이 : <input type="text" name="age" id="age"></label>
+            <br>
+            <label>성별 : </label>
+            <input type="radio" name="gender" value="M" id="male"><label for="male"> 남 </label>
+            <input type="radio" name="gender" value="F" id="female"><label for="female"> 여 </label>
+            <br>
+            <label>전화번호 : <input type="tel" id="phone"></label>
+            <br>
+
+            <label>취미 : </label>
+            <input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie"> 영화보기</label>
+            <input type="checkbox" name="hobby" value="music" id="music"><label for="music"> 음악듣기 </label>
+            <input type="checkbox" name="hobby" value="sport" id="sport"><label for="sport"> 운동 </label>
+            <input type="checkbox" name="hobby" value="reading" id="reading"><label for="reading"> 독서 </label>
+            <input type="checkbox" name="hobby" value="climb" id="climb"><label for="climb"> 등산 </label>
+            <br>
+            <input type="button" value="추가하기" onclick="addUser();">
+            <!-- 초기화 버튼은 번외로 추가! -->
+            <input type="button" value="초기화" onclick="resetData();">
+        </form>
+
+        <p id="p3">
+            <table id="tbl" width="500px" border="1" cellspacing="0">
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>성별</th>
+                    <th>전화번호</th>
+                    <th>취미</th>
+                </tr>
+                <!-- 입력값들을 추가해 나감 -->
+                <!-- <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr> -->
+            </table>
+
+            <script>
+                // 초기화 시키기
+                function resetData() {
+                    document.querySelector("#name").value = "";
+                    document.querySelector("#age").value = "";
+                    document.querySelector("#phone").value = "";
+                    for(var i = 0; i < 2; i++) {
+                        var genderTag = document.querySelectorAll("[name=gender]")[i].checked = false;
+                        if(genderTag.checked) {
+                            genderTag.checked = false;
+                        }
+                        }
+                        for(var j = 0; j < 5; j++) {
+                            document.querySelectorAll("[name=hobby]")[j].checked = false;
+                        }
+                }
+
+
+
+
+                function addUser() {
+                    // id="name" value 값 가져오기
+                    var nameVal = document.querySelector("#name").value;
+                    var ageVal = document.querySelector("#age").value;
+                    // 위 코드와 동일 var ageVal = document.getElementById("age").value;
+                    var genderTag = document.querySelectorAll("[name=gender]");
+                    // document.getElementById("gender");
+                    // 취미 체크박스 가져오기
+                    var phoneVal = document.querySelector("#phone").value;
+                    var hobbyTag = document.querySelectorAll("[name=hobby]");
+                    
+                    
+                    
+                    // 입력되지 않을 경우 추가하지 않기
+                    if(nameVal == "") {
+                        alert("이름을 입력해주세요");
+                        return;
+                    }
+                    if(ageVal == "") {
+                        alert("나이를 입력해주세요");
+                        return;
+                    }
+                    // false 일때 동작할 때 사용하는 부정 연산자 !
+                    // && 을 사용해서 남이든 여이든 꼭 선택하기
+                    if(!genderTag[0].checked && !genderTag[1].checked) {
+                        alert("성별을 선택해주세요");
+                        return;
+                    }
+                    if(phoneVal == "") {
+                        alert("전화번호를 입력해주세요");
+                        return;
+                    }
+                    // 취미 1개이상 선택하기
+                    // for문 / if 문을 사용하기(응용)
+                    count = 0;
+                    for(var k = 0; k < 5; k++) {
+                        if(hobbyTag[k].checked) {
+                            count++;
+                        }
+                    }
+                    if(count == 0) {
+                        alert("적어도 1개 이상 선택해주세요");
+                    }
+                    // if문 사용이 가능하다!
+                    // if(!hobbyTag[0].checked 
+                    //     && !hobbyTag[1].checked 
+                    //     && !hobbyTag[2].checked 
+                    //     && !hobbyTag[3].checked 
+                    //     && !hobbyTag[4].checked) {
+                    //         alert("적어도 1개 이상 선택해주세요");
+                    //         return;
+                    // }
+
+
+                    // * 취미 가져오는걸 구현하는 코드 작성한 순서
+                    // 1. else if : 조건이 참이면 뒤 값은 보지도 않는다.
+                    // 2. if문으로 여러개 적어야만 모두 동작된다.(누적가능)
+                    // 3. 0으로 시작해서 1씩 증가하면서 반복(반복문으로 가능)
+                    // 4. 영문으로 나오는 값을 nextSibing 을 이용해서 한글을 나타냄
+                    
+                    
+                    // 성별 체크값 가져오기
+                    // 체크박스에 체크된 것을 확인할 때 if문 사용! // .checked : 체크된 것
+                    var genderVal="";
+                    if(genderTag[0].checked) {
+                        genderVal="남";
+                    }else if(genderTag[1].checked) {
+                        genderVal="여";
+                    }
+                    
+                    
+                    // // for문을 사용해서 hobby value값 가져오기
+                    // for(var i = 0; i < 5; i++) {
+                        //     // if문이 1줄일 경우 중괄호를 안써도 작동한다.
+                        //     if(hobbyTag[i].checked)
+                        //     hobbyVal += hobbyTag[i].value+", ";
+                        // }
+                        
+                        // hobby value값 다음
+                        // for문을 사용해서 취미 value값 가져오기
+                        var hobbyVal = "";
+                    for(var i = 0; i < 5; i++) {
+                        if(hobbyTag[i].checked) {
+                            // nextSibling : 내가 선택한 요소의 다음 요소를 가져온다.
+                            // 영어인 value 값 대신 다음 요소인 한글이 나오게된다.
+                            // .teim() : 공백을 없애는 함수
+                            hobbyVal += hobbyTag[i].nextSibling.innerText.trim()+", ";
+                        }
+                    }
+
+                    // if문을 썼을 때 index 부분과 "" 안에 들어가는 내용만 다르기때문에 for문 사용이 가능하고,
+                    // 위쪽에 추가했다.
+                    // // else if로 연결하면 true 가 될 경우 뒤를 추가로 더 보지 않아서 if 를 계속 사용해야한다. 
+                    // if(hobbyTag[0].checked) {
+                    //     hobbyVal += "영화보기";
+                    // }if(hobbyTag[1].checked) {
+                    //     hobbyVal += "음악듣기";
+                    // }if(hobbyTag[2].checked) {
+                    //     hobbyVal += "운동";
+                    // }if(hobbyTag[3].checked) {
+                    //     hobbyVal += "독서";
+                    // }if(hobbyTag[4].checked) {
+                    //     hobbyVal += "등산";
+                    // }
+
+
+                    var tableTag = document.getElementById("tbl");
+                    tableTag.innerHTML += "<tr><td>"+nameVal+"</td><td>"+ageVal+"</td><td>"+genderVal+"</td><td>"+phoneVal+"</td><td>"+hobbyVal+"</td></tr>";
+                    
+                    
+                    
+                    // 초기화버튼을 만들어서 리셋하는 함수를 만들어놨기 때문에, 초기화하는 코드를 두번쓰지 않아도 괜찮다.
+                    // // 입력한 값 초기화
+                    resetData();
+
+                    // document.querySelector("#name").value = "";
+                    // document.querySelector("#age").value = "";
+                    // document.querySelector("#phone").value = "";
+
+                    // // 라디오 버튼 초기화
+                    // // genderTag = document.querySelectorAll("[name=gender]")[i].checked = false;
+                    // // 위 코드만 추가해도 괜찮지만, 체크가 되어있는게 기본값일 경우에도 체크박스를 지우려면 if문을 사용해
+                    // // genderTag 가 체크되어있을 경우 체크박스 값을 지울 수 있다.
+                    // for(var i = 0; i < 2; i++) {
+                    //     var genderTag = document.querySelectorAll("[name=gender]")[i].checked = false;
+                    //     if(genderTag.checked) {
+                    //         genderTag.checked = false;
+                    //     }
+                    //     }
+                    //     // 이 내용을 for 문을 사용할 수 있다.
+                    //     // document.querySelectorAll("[name=gender]")[0].checked = false;
+                    //     // document.querySelectorAll("[name=gender]")[1].checked = false;
+    
+    
+                    //     // 체크박스 초기화
+                    //     for(var j = 0; j < 5; j++) {
+                    //         document.querySelectorAll("[name=hobby]")[j].checked = false;
+                    //     }
+                    }
+
+
+
+            </script>
+            </p>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+/* 드림제주 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
+
+header {
+    background-color: #045;
+    width: 100%;
+    height: 100px;
+}
+a {
+    /* 밑줄 없애기 */
+    text-decoration: none;
+}
+ul {
+    /* 디스크 없애기 */
+    list-style-type: none;
+}
+
+#contanier {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+#logo {
+    width: 250px;
+    height: 100px;
+    padding-left: 20px;
+    /* 행간 높이 조정 */
+    line-height: 100px;
+    float: left;
+}
+#logo h1 {
+    font-family:  'Merienda', cursive;
+    font-weight: 700;
+    font-size: 40px;
+    /* 디자인 영역 */
+    color:  #fff;
+    text-shadow: 0 -1px 0 #222;
+}
+nav {
+    width: 900px;
+    height: 100px;
+    float: right;
+    padding-top: 40px;
+}
+#topMenu {
+    height: 60px;
+}
+#topMenu > li {
+    float: left;
+}
+#topMenu > li > a {
+/* 블록 속성 만들기 */
+    display: block;
+    padding: 20px 60px;
+    /* 디자인 영역 */
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 600;
+}
+main {
+    --background-color: aqua;
+    width: 1000px;
+    margin: 5% auto;
+}
+    main > section {
+        margin-top: 60px;
+    }
+    main h2 {
+        font-size: 1.5em;
+        /* 행간 높이 조정 */
+        line-height: 2.5;
+    }
+    main h3 {
+        font-size: 1.2em;
+        line-height: 2.2;
+    }
+    main div {
+        margin-top: 20px;
+    }
+    .detail p {
+        line-height: 2.0;
+        color: black;
+    }
+    .detail > img {
+        float:left;
+        /* 사진 모서리 깍음 */
+        border-radius: 20px;
+        margin-right: 50px;
+    }
+    .schedule {
+        font-size: 1.1em;
+    }
+    .schedule ul li {
+        line-height: 2;
+    }
+footer {
+    width: 1200px;
+    height: 100px;
+    border-top: 2px solid #222;
+}
+    footer>section {
+        width: 100%;
+        height: 20px;
+        margin-left: 60px;
+    }
+    #bottomMenu li {
+        float:left;
+        /* 글씨 사이 간격을 늘림 */
+        padding: 5px 20px;
+        /* 오른쪽에만 실선 */
+        border-right: 1px solid #ddd;
+    }
+    #bottomMenu li:last-child {
+        border: none;
+    }

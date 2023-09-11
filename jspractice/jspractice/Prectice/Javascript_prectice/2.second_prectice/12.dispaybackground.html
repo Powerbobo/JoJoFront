@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배경색 바꾸기</title>
+        <style>
+
+            a:link, a:visited {
+                color: #222;
+                text-decoration: none;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                width: 500px;
+                margin: 10px auto;
+            }
+            ul li {
+                display: inline-block;
+                border: 1px solid #ccc;
+                padding: 10px 52px;
+                text-align: center;
+            }
+            div {
+                border: 2px solid #ccc;
+                margin-top: 30px;
+                height: 300px;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="#" onclick="changbg('green')">Greena</li>
+            <li><a href="#" onclick="changbg('orange')">Orange</a> </li>
+            <li><a href="#" onclick="changbg('purple')">Purple</a> </li>
+            <div id="result"></div>
+
+        </ul>
+            <!-- 표준 이벤트 시도 -->
+            <!-- <li><a href="#" value="green" class="colorVal">Green</a></li>
+            <li><a href="#" value="orange"class="colorVal">Orange</a></li>
+            <li><a href="#" value="purple"class="colorVal">Purple</a></li>
+            <div id="area"></div> -->
+        <script>
+            function changbg(color) {
+                document.querySelector("#result").style.background = color;
+            }
+
+            // 표준 이벤트 시도
+            // var btn = document.querySelector(".colorVal");
+            // btn.addEventListener("click", function(color) {
+            //     document.querySelector("#area").style.backgroundColor = color;
+            // })
+        </script>
+    </body>
+</html>

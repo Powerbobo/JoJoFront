@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 조작 메소드</title>
+    <style>
+        table { border : 1px solid black; }
+        th,td { border : 1px solid black; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+    <script>
+        $(function() {
+            $("#btn").on("click", () => {
+                // tr 태그 변수로 지정
+                const trTags = $("tr");
+                // 정보를 누적 할 변수 선언
+                let str = "";
+                // jQuery each 메서드 사용
+                $.each(trTags, (index, item) => {
+                    // 배열이 0개 이상일 경우
+                    if(index > 0) {
+                        // trTags(tr) 키값의 자손들을 tdTags 변수명에 넣어서 선언
+                        const tdTags = $(item).children();
+                        // tr의 첫번째 자손을 checkbox라는 변수명으로 선언
+                        const checkbox = tdTags.first().children();
+                        // tr의 첫번째 자손이 체크 될 경우
+                        if(checkbox.is(":checked")) {
+                            // tr 의 자손들(td) = td 값들을 text str에 누적해서 저장
+                            str += tdTags.eq(1).text()+", "+tdTags.eq(2).text()+", "+tdTags.eq(3).text()+"<br>"
+                        }
+                    }
+                });
+                // 결과 창에 출력
+                $("#result").html(str);
+            })
+        })
+    </script>
+    <table>
+        <tr>
+            <th>체크</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>홍길동</td>
+            <td><a href="#">20</a></td>
+            <td>서울시</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>김말똥</td>
+            <td>30</td>
+            <td>경기도</td>
+
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>고길똥</td>
+            <td>40</td>
+            <td>강원도</td>
+
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>김지똥</td>
+            <td>50</td>
+            <td>인천광역시</td>
+
+        </tr>
+    </table>
+    <br>
+    <label>출력</label>
+    <div style="border:3px solid red; height:200px; width:500px;" id="result">
+    </div>
+    <button id="btn">출력</button>    
+</body>
+</html>

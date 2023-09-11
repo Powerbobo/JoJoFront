@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>display 속성</title>
+        <style>
+            .positioning {
+                border : 1px solid black;
+            }
+            .outer {
+                position : static;
+            }
+                .first {
+                    width: 300px;
+                    height: 300px;
+                    background-color: green;
+                    /* position: absolute;
+                    top: 0px;
+                    left: 0px; */
+                }
+
+                .second {
+                    width: 200px;
+                    height: 200px;
+                    background-color: gold;
+
+                    /* static(기본값) 일 경우 오프셋이 적용 안된다*/
+
+                    /* absolute 포지션 */
+                    /* position: absolute;
+                    top: 50px;
+                    left: 50px; */
+
+                    /* relative 포지션 */
+                    /* position: relative; */
+                    /* 위쪽 공간
+                    top: -250px;
+                    왼쪽 공간
+                    left: 50px; */
+                }
+                
+                .third {
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+
+                    /* absolut 포지션 */
+                    /* position: absolute;
+                    top: 100px;
+                    left: 100px; */
+
+                    /* relative 포지션 */
+                    /* position: relative;
+                    top: -400px;
+                    left: 100px; */
+                }
+            .fixed-area {
+                width: 100px;
+                height: 100px;
+                background-color: saddlebrown;
+                position: static;
+                top: 350px;
+
+                /* 포지션 고정 */
+                /* position: fixed; 
+                top: 350px;*/
+            }
+            .z-test {
+                width: 150px;
+                height: 100px;
+                border: 1px solid black;
+            }
+            .wap {
+                position: relative;
+            }
+                .z-test1 {
+                    background-color: red;
+                    position: absolute;
+                    top: 1250px;
+                    left: 100px;
+                    z-index: 1000;
+                }
+                .z-test2 {
+                    background-color: sienna;
+                    position: absolute;
+                    top: 1200px;
+                    left: 50px;
+                    z-index: 500;
+                }
+                .z-test3 {
+                    background-color: orchid;
+                    position: absolute;
+                    top: 1150px;
+                    left: 10px;
+                    z-index: 10;
+                }
+        </style>
+    </head>
+    <body>
+        <h3>절대위치와 상대위치</h3>
+            <pre>CSS Position의 속성값
+            1. static, 아무것도 지정하지 않은 경우 default값으로 사용됨.
+            CSS의 Normal-flow에 따라 배치, offset이 적용되지 않는다.
+            2. relatvie, 자신이 원래 있어야 할 위치의 offset에 따라 배치됨.
+            * offset은 top,left,right,bottom 속성값이며 offset을 지정하지 않으면 static과
+            동일한 기능을 수행함.
+            3. absolute, absolute로 정의된 요소는 CSS의 Normal-flow 흐름에서 배제된다.
+            위치는 부모 요소(태그) 위치의 상대값에 따라 배치된다.
+            단, 부모 요소가 static인 경우에는 조상요소의 position속성이 static이 아닐때까지 거슬러
+            올라가 배치된다.
+            4. fixed, 브라우저의 창에 상대적인 위치(offset)에 보이도록 한다. 즉, 화면 스크롤과
+            상관없이 항상 화면의 정해진 위치에 배치됨.
+            </pre>
+            <div class="outer">
+                <div class="positioning first"></div>
+                <div class="positioning second"></div>
+                <div class="positioning third"></div>
+            </div>    
+            <h3>고정위치</h3>
+            <div class="positioning fixed-area"></div><h3>z-index</h3>
+            <p>페이지 안의 요소들을 순서대로 위로 쌓는 속성</p>
+            <div class="wrap">
+                <div class="z-test z-test1">요소1</div>
+                <div class="z-test z-test2">요소2</div>
+                <div class="z-test z-test3">요소3</div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+    </body>
+</html>
